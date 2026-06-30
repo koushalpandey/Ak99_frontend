@@ -20,7 +20,14 @@ export const getSlider = async () => {
 
 export const categorieseUser = async () => {
   return await apiRequest({
-    url: "user/category",
+    url: "user/products/categories",
+    method: "get",
+    payload: false,
+  });
+};
+export const getProductDetail = async () => {
+  return await apiRequest({
+    url: "user/",
     method: "get",
     payload: false,
   });
