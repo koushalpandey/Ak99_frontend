@@ -1,16 +1,16 @@
 import { create } from "zustand";
 import { getProductDetail } from "../../api/endpoint/api.endpoint.js";
 
-const useSliderStore = create((set) => ({
+const useProductDetailStore = create((set) => ({
   Data: [],
   loading: false,
   error: null,
 
-  fetchSlider: async () => {
+  fetchProductDetail: async (slug) => {
     set({ loading: true, error: null });
 
     try {
-      const response = await getProductDetail();
+      const response = await getProductDetail(slug);
       set({
         Data: response.data,
         loading: false,
@@ -24,4 +24,4 @@ const useSliderStore = create((set) => ({
   },
 }));
 
-export default useSliderStore;
+export default useProductDetailStore;

@@ -25,9 +25,9 @@ export const categorieseUser = async () => {
     payload: false,
   });
 };
-export const getProductDetail = async () => {
-  return await apiRequest({
-    url: "user/",
+export const getProductDetail = async (slug) => {
+ return await apiRequest({
+    url: `user/products/slug/${slug}`,
     method: "get",
     payload: false,
   });

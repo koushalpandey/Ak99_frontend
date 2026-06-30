@@ -5,19 +5,15 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 
-// Replace with your actual image imports
-import dummyImage1 from "../../../assets/hero-banner.png";
 
-const ProductImages = () => {
+
+const ProductImages = ({ Productimages }) => {
+  console.log(Productimages);
+
+
   const [selectedImage, setSelectedImage] = useState(0);
   const [isWishlisted, setIsWishlisted] = useState(false);
-
-  const images = [
-    { id: 1, url: dummyImage1, alt: "Product main view" },
-    { id: 2, url: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500", alt: "Product side view" },
-    { id: 3, url: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500", alt: "Product top view" },
-    { id: 4, url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500", alt: "Product packaging" },
-  ];
+  const images = Array.isArray(Productimages) ? Productimages : [];
 
   const handleThumbnailClick = (index) => {
     setSelectedImage(index);
@@ -71,14 +67,14 @@ const ProductImages = () => {
             elevation={0}
             sx={{
               width: "100%",
-              height: { xs: 280, md: 580 },
+              height: { xs: 280, md: 460 },
               overflow: "hidden",
             }}
           >
             <CardMedia
               component="img"
-              image={images[selectedImage].url}
-              alt={images[selectedImage].alt}
+              image={images[selectedImage]?.original}
+              alt={`Product ${selectedImage + 1}`}
               sx={{
                 width: "100%",
                 height: "100%",
@@ -132,8 +128,8 @@ const ProductImages = () => {
 
       {/* Thumbnails */}
       <Grid container spacing={1}>
-        {images.map((img, index) => (
-          <Grid size={{ xs: 3, }} key={img.id}>
+        {images?.map((img, index) => (
+          <Grid size={{ xs: 3, }} key={img?.fileId}>
             <Card
               onClick={() => handleThumbnailClick(index)}
               elevation={0}
@@ -153,8 +149,8 @@ const ProductImages = () => {
             >
               <CardMedia
                 component="img"
-                image={img.url}
-                alt={img.alt}
+                image={img.thumbnail}
+                alt={`Thumbnail ${index + 1}`}
                 sx={{
                   width: "100%",
                   height: "100%",
@@ -175,7 +171,7 @@ const ProductImages = () => {
           mt: 1.5,
         }}
       >
-        {images.map((_, index) => (
+        {images?.map((_, index) => (
           <Box
             key={index}
             onClick={() => handleThumbnailClick(index)}
