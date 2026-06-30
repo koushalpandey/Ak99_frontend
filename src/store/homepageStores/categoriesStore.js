@@ -1,16 +1,16 @@
 import { create } from "zustand";
-import { getSlider } from "../api/endpoint/api.endpoint";
+import { categorieseUser } from "../../api/endpoint/api.endpoint.js";
 
-const useSliderStore = create((set) => ({
+const useCatStore = create((set) => ({
   slider: [],
   loading: false,
   error: null,
 
-  fetchSlider: async () => {
+  fetchCategorie: async () => {
     set({ loading: true, error: null });
 
     try {
-      const response = await getSlider();
+      const response = await categorieseUser();
       set({
         slider: response.data,
         loading: false,
@@ -24,4 +24,4 @@ const useSliderStore = create((set) => ({
   },
 }));
 
-export default useSliderStore;
+export default useCatStore;

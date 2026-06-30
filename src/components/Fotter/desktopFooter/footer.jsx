@@ -8,7 +8,7 @@ export default function Footer() {
                 <Grid container spacing={4}>
 
                     {/* Brand & Newsletter Column */}
-                    <Grid item xs={12} md={4}>
+                    <Grid size xs={12} md={4}>
 
                         <Typography
 
@@ -54,7 +54,7 @@ export default function Footer() {
 
                     {/* Dynamic Map Links Columns */}
                     {footerLinks.map((section, index) => (
-                        <Grid item xs={6} sm={4} md={2} key={index}>
+                        <Grid size xs={6} sm={4} md={2} key={index}>
                             <Typography
                                 variant="subtitle1"
                                 sx={{ color: "#ffffff", fontWeight: 700, mb: 2, fontSize: "15px", fontFamily: "sans-serif" }}
@@ -82,7 +82,7 @@ export default function Footer() {
                     ))}
 
                     {/* Connect / Socials Column */}
-                    <Grid item xs={6} sm={4} md={2}>
+                    <Grid size xs={6} sm={4} md={2}>
                         <Typography
                             variant="subtitle1"
                             sx={{ color: "#ffffff", fontWeight: 700, mb: 2, fontSize: "15px", fontFamily: "sans-serif" }}

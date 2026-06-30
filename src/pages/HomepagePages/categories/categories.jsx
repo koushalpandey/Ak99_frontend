@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Box, Typography, Link, CircularProgress } from '@mui/material';
-import useCatStore from '../../../store/categoriesStore';
+import useCatStore from '../../../store/homepageStores/categoriesStore';
 
 export default function CategoryNav() {
 

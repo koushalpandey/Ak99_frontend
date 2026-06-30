@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Box, Grid, Card, CardMedia, CircularProgress, Typography } from '@mui/material';
-import useSliderStore from '../../../store/sliderStore';
+import useSliderStore from '../../../store/homepageStores/sliderStore';
 
 function SliderComponent() {
     const sliderData = useSliderStore((state) => state?.slider);
@@ -35,8 +35,8 @@ function SliderComponent() {
 
     return (
         <Box sx={{ width: '100%', p: { xs: 2, sm: 3 }, mt: 2, bgcolor: "secondary.main" }}>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
+            <Grid container>
+                <Grid size xs={12}>
                     <Card
                         sx={{
                             width: "100%",
