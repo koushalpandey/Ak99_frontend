@@ -31,10 +31,7 @@ function SliderComponent() {
 
 
     const firstSlider = Array.isArray(sliderData) ? sliderData[0] : sliderData?.data?.[0];
-    const imageUrl = firstSlider?.image?.original ||
-                     firstSlider?.image?.large ||
-                     firstSlider?.image?.url ||
-                     'https://via.placeholder.com/1920x800?text=No+Image+Available';
+    const imageUrl =firstSlider?.image?.original || firstSlider?.image?.large ||firstSlider?.image?.url ||'N/A';
 
     const imageAlt = firstSlider?.title || "Banner";
 

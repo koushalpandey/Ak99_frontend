@@ -1,20 +1,43 @@
-import React, { useState } from 'react';
-import { Box, Typography, Link } from '@mui/material';
+import { useEffect } from 'react';
+import { Box, Typography, Link, CircularProgress } from '@mui/material';
 import useCatStore from '../../../store/categoriesStore';
 
+export default function CategoryNav() {
 
-export default function CategoryNav({ categoriesData }) {
+    const categoriesState = useCatStore((state) => state?.slider);
+    const loading = useCatStore((state) => state?.loading);
+    const error = useCatStore((state) => state?.error);
+    const fetchCategorie = useCatStore((state) => state?.fetchCategorie);
 
-    const categorie = useCatStore((state) => state.slider);
-    const loading = useCatStore((state) => state.loading);
-    const error = useCatStore((state) => state.error);
-    const fetchCategorie = useCatStore((state) => state.fetchCategorie);
-
-    useState(()=>{
-         fetchCategorie()
-    },[fetchCategorie])
+    useEffect(() => {
+        if (fetchCategorie) {
+            fetchCategorie();
+        }
+    }, [fetchCategorie]);
 
 
+    const categoriesList = Array.isArray(categoriesState)
+        ? categoriesState
+        : categoriesState?.data || [];
+
+
+
+
+    if (loading) {
+        return (
+            <Box sx={{ display: 'flex', justifyContent: 'center', p: 3, width: '100%' }}>
+                <CircularProgress size={24} color="primary" />
+            </Box>
+        );
+    }
+
+    if (error) {
+        return (
+            <Box sx={{ display: 'flex', justifyContent: 'center', p: 3, width: '100%' }}>
+                <Typography variant="body2" color="error">Failed to load categories.</Typography>
+            </Box>
+        );
+    }
 
     return (
         <Box
@@ -27,70 +50,80 @@ export default function CategoryNav({ categoriesData }) {
                 width: '100%',
                 gap: 5,
                 py: 2,
+                px: 1,
                 "::-webkit-scrollbar": { display: "none" },
                 msOverflowStyle: "none",
                 scrollbarWidth: "none",
             }}
         >
-            {categoriesData.map((category) => (
-                <Link
-                    key={category.id}
-                    underline="none"
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
+            {categoriesList.map((category) => {
 
-                        cursor: 'pointer',
-                        flexShrink: 0,
-                    }}
-                >
+                const categoryImage = category?.image?.original ||
+                                      category?.image?.medium ||
+                                      category?.image?.url ||
+                                      'https://via.placeholder.com/100';
 
-                    <Box
+                const categoryName = category?.name || "Category";
+
+                return (
+                    <Link
+                        key={category.id}
+                        underline="none"
                         sx={{
-                            width: 104,
-                            height: 110,
-                            borderRadius: '18px',
-                            backgroundColor: '#f5f5f5',
                             display: 'flex',
-                            justifyContent: 'center',
+                            flexDirection: 'column',
                             alignItems: 'center',
-                            overflow: 'hidden',
-                            marginBottom: '10px',
+                            cursor: 'pointer',
+                            flexShrink: 0,
                         }}
                     >
+
                         <Box
-                            component="img"
-                            src={category.image}
-                            alt={category.label}
                             sx={{
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'cover',
+                                width: 104,
+                                height: 110,
+                                borderRadius: '18px',
+                                backgroundColor: '#f5f5f5',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                overflow: 'hidden',
+                                marginBottom: '10px',
                             }}
-                        />
-                    </Box>
+                        >
+                            <Box
+                                component="img"
+                                src={categoryImage}
+                                alt={categoryName}
+                                sx={{
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                }}
+                            />
+                        </Box>
 
-                    {/* Text Labels */}
-                    <Typography
-                        sx={{
-                            fontWeight: 500,
-                            color: 'black.main',
-                            textAlign: 'center',
-                            fontSize: '12px',
-                            lineHeight: 1,
-                            display: 'flex',
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: 'vertical',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
 
-                        }}
-                    >
-                        {category.label}
-                    </Typography>
-                </Link>
-            ))}
+                        <Typography
+                            sx={{
+                                fontWeight: 500,
+                                color: 'text.primary',
+                                textAlign: 'center',
+                                fontSize: '12px',
+                                lineHeight: 1.2,
+                                display: '-webkit-box',
+                                WebkitLineClamp: 2,
+                                WebkitBoxOrient: 'vertical',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                maxWidth: 104
+                            }}
+                        >
+                            {categoryName}
+                        </Typography>
+                    </Link>
+                );
+            })}
         </Box>
     );
 }
