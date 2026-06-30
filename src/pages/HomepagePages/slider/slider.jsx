@@ -38,8 +38,6 @@ function SliderComponent() {
     return (
         <Box sx={{ width: '100%', p: { xs: 2, sm: 3 }, mt: 2, bgcolor: "secondary.main" }}>
             <Grid container spacing={3}>
-
-
                 <Grid item xs={12}>
                     <Card
                         sx={{
