@@ -28,8 +28,6 @@ function SliderComponent() {
             </Box>
         );
     }
-
-
     const firstSlider = Array.isArray(sliderData) ? sliderData[0] : sliderData?.data?.[0];
     const imageUrl =firstSlider?.image?.original || firstSlider?.image?.large ||firstSlider?.image?.url ||'N/A';
 
