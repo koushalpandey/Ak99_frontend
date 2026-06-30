@@ -1,25 +1,30 @@
 
-import { Box, Typography, Link } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import { NavLink } from 'react-router-dom';
+
+
 
 const SpecificCategoryDesign = ({ item }) => {
+    console.log(item);
+
     return (
-        <Link
-            underline="none"
+        <Box
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 cursor: 'pointer',
                 flexShrink: 0,
-                gap: 5
+
             }}
         >
-            {/* Warm Grounded Image Container Frame */}
             <Box
+                component={NavLink}
+                to={`/productDetail/${item?.slug}`}
                 sx={{
                     width: 180,
-                    height: 200,
-                    borderRadius: '32px',
+                    height: 220,
+                    borderRadius: '22px',
                     backgroundColor: '#eadecf',
                     display: 'flex',
                     justifyContent: 'center',
@@ -29,19 +34,21 @@ const SpecificCategoryDesign = ({ item }) => {
 
                 }}
             >
-                <Box
-                    component="img"
-                    src={item.image}
-                    alt={item.label}
-                    sx={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                    }}
-                />
-            </Box>
+                {item?.images?.map((img) => (
+                    <Box
+                        component="img"
+                        src={img?.url}
+                        alt={"No Image"}
+                        sx={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                        }}
+                    />
 
-            {/* Product Category Text Label */}
+                ))}
+
+            </Box>
             <Typography
                 sx={{
                     fontWeight: 700,
@@ -49,7 +56,6 @@ const SpecificCategoryDesign = ({ item }) => {
                     textAlign: 'center',
                     fontSize: '14px',
                     lineHeight: 1.2,
-                    fontFamily: 'sans-serif',
                     display: '-webkit-box',
                     WebkitLineClamp: 2,
                     WebkitBoxOrient: 'vertical',
@@ -58,9 +64,9 @@ const SpecificCategoryDesign = ({ item }) => {
                     px: 0.5
                 }}
             >
-                {item.label}
+                {item?.name}
             </Typography>
-        </Link>
+        </Box>
     );
 };
 

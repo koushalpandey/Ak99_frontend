@@ -18,11 +18,7 @@ const ProductDetailsPage = () => {
     fetchProductDetail(slug)
   }, [fetchProductDetail, slug])
 
-
-console.log("ProductDetail",ProductDetail);
-
-
-  return (
+return (
     <Container maxWidth="xl" disableGutters sx={{ p: 0 }}>
       <Grid container spacing={0} sx={{ minHeight: "100vh" }}>
 
@@ -37,7 +33,9 @@ console.log("ProductDetail",ProductDetail);
           />
         </Grid>
         <Grid size={{ xs: 12, md: 6 }}>
-          <ProductInformation />
+          <ProductInformation
+          productData = {ProductDetail}
+          />
           <Specification />
           <ReviewSection />
         </Grid>

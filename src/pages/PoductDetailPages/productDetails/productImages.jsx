@@ -8,9 +8,6 @@ import ZoomInIcon from "@mui/icons-material/ZoomIn";
 
 
 const ProductImages = ({ Productimages }) => {
-  console.log(Productimages);
-
-
   const [selectedImage, setSelectedImage] = useState(0);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const images = Array.isArray(Productimages) ? Productimages : [];

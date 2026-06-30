@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Box, Container } from "@mui/material";
 import Navbar from "../components/Navbar/navbar";
 import FooterLayout from "../components/Fotter/index";
+import ScrollToTop from "../components/scrolltop/scrolltop";
 
 const MainLayout = () => {
     return (
@@ -12,6 +13,7 @@ const MainLayout = () => {
                 flexDirection: "column",
             }}
         >
+            <ScrollToTop />
             <Navbar />
 
             <Box

@@ -1,38 +1,55 @@
-import { Box, Typography, Button } from '@mui/material';
+import { useEffect } from 'react';
+import { Box, Typography, Button, CircularProgress } from '@mui/material';
 import SpecificCategoryDesign from '../../../components/useFullcomponents/DesignComponent/productCardDesign/specifccategorieDesign';
-import { useEffect, useState } from 'react';
-import { fetchSpeificCategories } from '../../../components/dummyData/specificCategroesData';
-
+import useProductListStore from '../../../store/productListStores/homepageProductlist';
 
 const ProductCategory = () => {
-    const [data, setData] = useState([])
+    // 1. Hook directly into your Zustand Store values
+    const productListData = useProductListStore((state) => state?.Data);
+    const loading = useProductListStore((state) => state?.loading);
+    const error = useProductListStore((state) => state?.error);
+    const fetchProductList = useProductListStore((state) => state?.fetchProductList);
 
-    const getData = async () => {
-        try {
-            const res = await fetchSpeificCategories()
-            setData(res?.data)
-        } catch (error) {
 
-            console.log(error.message);
-
-        }
-    }
     useEffect(() => {
-        getData();
-    }, [])
+        if (fetchProductList) {
+            fetchProductList();
+        }
+    }, [fetchProductList]);
+
+    if (loading) {
+        return (
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '200px', width: '100%' }}>
+                <CircularProgress color="primary" />
+            </Box>
+        );
+    }
+
+
+    if (error) {
+        return (
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '200px', width: '100%' }}>
+                <Typography color="error">Failed to load product section.</Typography>
+            </Box>
+        );
+    }
+
+
+    if (productListData?.products?.length === 0) return null;
+
 
 
 
     return (
-        <Box sx={{ width: '100%', padding: '24px', backgroundColor: '#ffffff' }}>
+        <Box sx={{ width: '100%', mt:2, backgroundColor: '#ffffff' }}>
 
-            {/* Header Row */}
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+            {/* Header section with Dynamic Title */}
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
                 <Typography
-                    variant="h6"
-                    sx={{ fontWeight: 600, color: 'black.main', fontSize: '22px' }}
+
+                    sx={{ fontWeight: 600, color: 'text.primary', fontSize: '22px' }}
                 >
-                    Home & kitchen
+                    {'Test-product'}
                 </Typography>
                 <Button
                     variant="outlined"
@@ -54,7 +71,7 @@ const ProductCategory = () => {
                 </Button>
             </Box>
 
-            {/* Horizontal Scroll Scroller Container */}
+
             <Box
                 sx={{
                     display: 'flex',
@@ -66,8 +83,8 @@ const ProductCategory = () => {
                     scrollbarWidth: "none",
                 }}
             >
-                {data.map((item) => (
-                    <SpecificCategoryDesign key={item.id} item={item} />
+                {productListData?.products?.map((item) => (
+                <SpecificCategoryDesign key={item.id} item={item} />
                 ))}
             </Box>
         </Box>
