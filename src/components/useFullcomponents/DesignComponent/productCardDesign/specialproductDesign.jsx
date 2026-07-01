@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Typography, Link, Card, CardMedia, CardContent, Grid } from "@mui/material";
+
+import { Box, Typography, Link, Card, CardMedia, CardContent } from "@mui/material";
 
 
 export default function SpecailProductPicks({ productData }) {
@@ -33,9 +33,9 @@ export default function SpecailProductPicks({ productData }) {
                     scrollbarWidth: "none",
                 }}
             >
-                {productData.map((product) => (
+                {productData?.map((product) => (
                     <Card
-                        key={product.id}
+                        key={product?.id}
                         sx={{
                             minWidth: 180,
                             maxWidth: 220,
@@ -50,8 +50,8 @@ export default function SpecailProductPicks({ productData }) {
                         <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 2, height: 140 }}>
                             <CardMedia
                                 component="img"
-                                image={product.image}
-                                alt={product.title}
+                                image={product?.image}
+                                alt={product?.title}
                                 sx={{ objectFit: "cover", maxHeight: "100%", maxWidth: "100%" }}
                             />
                         </Box>
@@ -62,7 +62,7 @@ export default function SpecailProductPicks({ productData }) {
                                 variant="body2"
                                 sx={{ fontWeight: 500, color: "#212121", mb: 0.5, fontSize: "14px" }}
                             >
-                                {product.title}
+                                {product?.title}
                             </Typography>
 
                             {/* Pricing Row */}
@@ -71,7 +71,7 @@ export default function SpecailProductPicks({ productData }) {
                                     variant="body1"
                                     sx={{ fontWeight: 700, color: "#d32f2f", fontSize: "16px" }}
                                 >
-                                    ₹{product.price}
+                                    ₹{product?.price}
                                 </Typography>
                                 <Typography
                                     variant="body2"
@@ -86,7 +86,7 @@ export default function SpecailProductPicks({ productData }) {
                                 variant="caption"
                                 sx={{ fontWeight: 600, color: "#2e7d32", fontSize: "12px" }}
                             >
-                                {product.discount}
+                                {product?.discount}
                             </Typography>
                         </CardContent>
                     </Card>

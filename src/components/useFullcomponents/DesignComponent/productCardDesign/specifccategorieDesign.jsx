@@ -33,8 +33,9 @@ const SpecificCategoryDesign = ({ item }) => {
 
                 }}
             >
-                {item?.images?.map((img) => (
+                {item?.images?.map((img,index) => (
                     <Box
+                        key={index}
                         component="img"
                         src={img?.url}
                         alt={"No Image"}

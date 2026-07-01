@@ -79,7 +79,7 @@ export default function ReviewSection() {
 
                 {/* Review Images Grid (Conditional Rendering) */}
                 {review.images.length > 0 && (
-                  <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                  <Stack direction="row" spacing={1} useFlexGap>
                     {review.images.map((imgUrl, index) => (
                       <Box
                         component="img"

@@ -65,7 +65,7 @@ export default function Specification() {
                                   { label: "Power Connection", value: "USB-C Detachable Interface (5V 1A)" },
                                   { label: "Smart Connectivity", value: "Bluetooth Low Energy (BLE) Mesh" },
                                 ].map((spec, index) => (
-                                  <Grid item xs={12} sm={6} key={index}>
+                                  <Grid size xs={12} sm={6} key={index}>
                                     <Typography variant="caption" display="block" sx={{ color: "#718096", fontWeight: 500 }}>
                                       {spec.label}
                                     </Typography>

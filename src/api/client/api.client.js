@@ -30,23 +30,31 @@ api.interceptors.response.use(
 
 
 export const apiRequest = async ({
-    url,
-    method = "GET",
-    payload = {},
-    params = {},
-    headers = {},
+  url,
+  method = "GET",
+  payload = {},
+  params = {},
+  headers = {},
+  requiresAuth = false,
 }) => {
-    try {
-        const response = await api({
-            url,
-            method,
-            data: payload,
-            params,
-            headers,
-        });
+  try {
+    const token = localStorage.getItem("token");
 
-        return response.data;
-    } catch (error) {
-        throw error?.response?.data || error.message;
-    }
+    const response = await api({
+      url,
+      method,
+      data: payload,
+      params,
+      headers: {
+        ...(requiresAuth && token
+          ? { Authorization: `Bearer ${token}` }
+          : {}),
+        ...headers,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    throw error?.response?.data || error.message;
+  }
 };

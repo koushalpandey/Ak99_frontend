@@ -48,8 +48,7 @@ const ProductInformation = ({ productData }) => {
           |
         </Typography>
         <Typography
-
-          sx={{
+        sx={{
             color: "#4a5568",
             textDecoration: "underline",
             cursor: "pointer",

@@ -14,13 +14,17 @@ import useAuthStore from "../../store/userStore/store.js";
 const ProductDetailsPage = () => {
   const ProductDetail = useProductDetailStore((state) => state?.Data)
   const fetchProductDetail = useProductDetailStore((state) => state?.fetchProductDetail);
-  const { userData } = useAuthStore();
+  const userData = useAuthStore((state) => state?.Data);
+  const fetchUserData = useAuthStore((state) => state?.fetchUserData);
   const { slug } = useParams();
   useEffect(() => {
     fetchProductDetail(slug)
   }, [fetchProductDetail, slug])
+  useEffect(() => {
+    fetchUserData()
+  }, [fetchUserData])
 
-return (
+ return (
     <Container maxWidth="xl" disableGutters sx={{ p: 0 }}>
       <Grid container spacing={0} sx={{ minHeight: "100vh" }}>
 
@@ -30,8 +34,8 @@ return (
           height: { xs: "none", md: "fit-content" },
         }}>
           <ProductBreadcrumb
-          categorieName={ProductDetail?.category?.slug}
-          productName={ProductDetail?.slug}
+            categorieName={ProductDetail?.category?.slug}
+            productName={ProductDetail?.slug}
 
           />
           <ProductImages
@@ -42,7 +46,7 @@ return (
         </Grid>
         <Grid size={{ xs: 12, md: 6 }}>
           <ProductInformation
-          productData = {ProductDetail}
+            productData={ProductDetail}
           />
           <Specification />
           <ReviewSection />

@@ -1,17 +1,25 @@
 import { create } from "zustand";
+import { getUserData } from "../../api/endpoint/api.endpoint.js";
 
 const useAuthStore = create((set) => ({
-  userData: null,
+  Data:{},
+  error: null,
 
-  setUserData: (data) =>
-    set({
-      userData: data,
-    }),
+  fetchUserData: async () => {
+    set({  error: null });
 
-  clearUserData: () =>
-    set({
-      userData: null,
-    }),
+    try {
+      const response = await getUserData();
+      set({
+        Data: response?.data,
+
+      });
+    } catch (error) {
+      set({
+        error: error.message || "Something went wrong",
+      });
+    }
+  },
 }));
 
 export default useAuthStore;
