@@ -43,5 +43,21 @@ export const getProductList = async () => {
     payload: false,
   });
 };
+export const AddWishList = async (data) => {
+ return await apiRequest({
+    url: `user/wishlist/add`,
+    method: "post",
+    payload: data,
+  });
+};
+export const getWishList = async (data) => {
+ return await apiRequest({
+    url: `user/wishlist/get`,
+    method: "post",
+    payload: data,
+  });
+};
+
+
 
 

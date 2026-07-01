@@ -8,11 +8,13 @@ import ProductBreadcrumb from "../../components/useFullcomponents/breadcrumb/pro
 import useProductDetailStore from "../../store/productDetailStores/store.js";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import useAuthStore from "../../store/userStore/store.js";
 
 
 const ProductDetailsPage = () => {
   const ProductDetail = useProductDetailStore((state) => state?.Data)
-  const fetchProductDetail = useProductDetailStore((state) => state?.fetchProductDetail)
+  const fetchProductDetail = useProductDetailStore((state) => state?.fetchProductDetail);
+  const { userData } = useAuthStore();
   const { slug } = useParams();
   useEffect(() => {
     fetchProductDetail(slug)
@@ -33,6 +35,8 @@ return (
 
           />
           <ProductImages
+            userId={userData?.user?.id}
+            productId={ProductDetail?.id}
             Productimages={ProductDetail?.images}
           />
         </Grid>

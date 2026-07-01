@@ -1,16 +1,14 @@
-// ProductImages.jsx
+
 import { useState } from "react";
-import { Card, CardMedia, Grid, Box, IconButton } from "@mui/material";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Card, CardMedia, Grid, Box } from "@mui/material";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
+import WishlistButton from "../../../components/useFullcomponents/wishListButton/wishlist";
 
 
 
-const ProductImages = ({ Productimages }) => {
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [isWishlisted, setIsWishlisted] = useState(false);
-  const images = Array.isArray(Productimages) ? Productimages : [];
+const ProductImages = ({ Productimages , productId ,userId}) => {
+ const [selectedImage, setSelectedImage] = useState(0);
+ const images = Array.isArray(Productimages) ? Productimages : [];
 
   const handleThumbnailClick = (index) => {
     setSelectedImage(index);
@@ -26,29 +24,11 @@ const ProductImages = ({ Productimages }) => {
     >
       {/* Wishlist Button */}
       <Box sx={{ position: "relative", mb: 2 }}>
-        <IconButton
-          onClick={() => setIsWishlisted(!isWishlisted)}
-          sx={{
-            position: "absolute",
-            top: 10,
-            right: 10,
-            backgroundColor: "rgba(255,255,255,0.9)",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-            zIndex: 10,
-            padding: "6px",
-            "&:hover": {
-              backgroundColor: "#ffffff",
-              transform: "scale(1.05)",
-            },
-            transition: "all 0.2s ease",
-          }}
-        >
-          {isWishlisted ? (
-            <FavoriteIcon sx={{ color: "#e74c3c", fontSize: 20 }} />
-          ) : (
-            <FavoriteBorderIcon sx={{ fontSize: 20 }} />
-          )}
-        </IconButton>
+        <WishlistButton
+          userId={userId}
+          productId={productId}
+
+        />
 
         {/* Main Image */}
         <Box

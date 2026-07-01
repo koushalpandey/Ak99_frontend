@@ -5,6 +5,7 @@ import { Notify, Loading } from 'notiflix';
 import { useNavigate } from 'react-router-dom';
 import Aklogo from "../../assets/ak99-logo.png"
 import banner from "../../assets/login_banner.png"
+import useAuthStore from '../../store/userStore/store';
 
 const theme = createTheme({
   breakpoints: {
@@ -21,15 +22,17 @@ const theme = createTheme({
 function Login() {
   const navigate = useNavigate();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const { setUserData } = useAuthStore();
 
   const handleSuccess = async (credentialResponse) => {
     Loading.pulse('Logging in...');
     try {
       const token = credentialResponse.credential;
       const res = await googleLoginApi({ token });
+      setUserData(res.data);
+      localStorage.setItem("token", res.data.token);
       Loading.remove();
       Notify.success('Login successful!');
-      localStorage.setItem("token", res.data.token);
       navigate('/');
     } catch (error) {
       Loading.remove();
