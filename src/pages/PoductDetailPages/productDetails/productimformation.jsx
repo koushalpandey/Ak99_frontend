@@ -7,7 +7,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MarketingBannerZone from "../../../components/Trust/ourtrust";
 
 const ProductInformation = ({ productData }) => {
-  console.log("productData", productData);
+
 
 
   const [quantity, setQuantity] = useState(1);

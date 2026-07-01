@@ -27,7 +27,11 @@ return (
           top: { xs: "none", md: "1px" },
           height: { xs: "none", md: "fit-content" },
         }}>
-          <ProductBreadcrumb/>
+          <ProductBreadcrumb
+          categorieName={ProductDetail?.category?.slug}
+          productName={ProductDetail?.slug}
+
+          />
           <ProductImages
             Productimages={ProductDetail?.images}
           />

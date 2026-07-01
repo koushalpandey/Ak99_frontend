@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 
 
 const SpecificCategoryDesign = ({ item }) => {
-    console.log(item);
 
     return (
         <Box
