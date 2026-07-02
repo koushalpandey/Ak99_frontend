@@ -9,7 +9,6 @@ import {
 } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-// import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 // Mock data directly matching the screenshot
@@ -64,7 +63,7 @@ const wishlistItems = [
 export default function WishlistComponent() {
   return (
     <Container maxWidth="lg" sx={{ py: 4, fontFamily: 'sans-serif' }}>
-      {/* Header Section */}
+
       <Box
         sx={{
           display: 'flex',
@@ -104,7 +103,7 @@ export default function WishlistComponent() {
         </Button>
       </Box>
 
-      {/* Wishlist Items List */}
+
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         {wishlistItems.map((item) => (
           <Paper
@@ -196,7 +195,7 @@ export default function WishlistComponent() {
               />
             </Box>
 
-            {/* Delete Button */}
+
             <IconButton
               sx={{
                 backgroundColor: '#fff1f2',
