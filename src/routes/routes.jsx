@@ -3,7 +3,8 @@ import MainLayout from "../layout/mainLayout";
 import Homepage from "../pages/HomepagePages/homepage";
 import ProductDetailsPage from "../pages/PoductDetailPages/productDetailsPage"
 import Login from "../auth/authpages/loginPage";
-import CheckoutPage from "../pages/checkoutPages/checkout";
+import CheckoutPage from "../pages/otherPages/checkout";
+import WishlistComponent from "../pages/otherPages/wishlistPage";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path:"/checkout",
                 element: <CheckoutPage />,
+            },
+            {
+                path:"/wishlist",
+                element: <WishlistComponent />,
             },
 
         ],
