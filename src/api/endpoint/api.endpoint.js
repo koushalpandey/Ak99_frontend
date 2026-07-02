@@ -60,7 +60,7 @@ export const AddWishList = async (data) => {
 export const getWishList = async (data) => {
   return await apiRequest({
     url: `user/wishlist/get`,
-    method: "post",
+    method: "get",
     payload: data,
     requiresAuth: true,
   });

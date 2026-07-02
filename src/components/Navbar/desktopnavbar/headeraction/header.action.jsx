@@ -5,6 +5,7 @@ import {
 import { Package } from "lucide-react"
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { NavLink } from "react-router-dom";
 
 function HeaderActions() {
 
@@ -21,12 +22,15 @@ function HeaderActions() {
     >
       {/* Wishlist Item */}
       <Box
-        sx={{
+      component={NavLink}
+      to={'wishlist'}
+      sx={{
           display: "flex",
           alignItems: "center",
           gap: "10px",
-          cursor: "pointer"
-        }}
+          cursor: "pointer",
+          textDecoration:"none",
+         }}
       >
         <FavoriteBorderIcon
           sx={{
@@ -37,9 +41,9 @@ function HeaderActions() {
         />
         <Typography
           sx={{
-            fontSize: "14px",
+            fontSize: "13.5px",
             fontWeight: 500,
-            color: "text.black",
+            color: "black.main",
 
 
           }}
@@ -73,7 +77,7 @@ function HeaderActions() {
         </Box>
         <Typography
           sx={{
-            fontSize: "14px",
+            fontSize: "13.5px",
             fontWeight: 500,
             color: "text.black",
 
@@ -100,7 +104,7 @@ function HeaderActions() {
         />
         <Typography
           sx={{
-            fontSize: "14px",
+            fontSize: "13.5px",
             fontWeight: 500,
             color: "text.black",
 
