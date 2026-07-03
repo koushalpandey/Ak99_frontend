@@ -9,6 +9,7 @@ import useProductDetailStore from "../../store/productDetailStores/store.js";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAuthStore from "../../store/userStore/store.js";
+import AddReviewComponent from "./reviewDetailes/add.review.jsx";
 
 
 const ProductDetailsPage = () => {
@@ -50,6 +51,9 @@ const ProductDetailsPage = () => {
           />
           <Specification />
           <ReviewSection />
+          <AddReviewComponent
+            productId={ProductDetail?.id}
+           />
         </Grid>
       </Grid>
 

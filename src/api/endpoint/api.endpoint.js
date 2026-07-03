@@ -65,3 +65,11 @@ export const getWishList = async (data) => {
     requiresAuth: true,
   });
 };
+export const submitReviewApi = async (data) => {
+  return await apiRequest({
+    url: `user/review/create`,
+    method: "post",
+    payload: data,
+    requiresAuth: true,
+  });
+};
