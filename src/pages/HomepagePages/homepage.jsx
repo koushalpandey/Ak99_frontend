@@ -6,7 +6,7 @@ import TopDealsOfTheDay from "./offerDeals/topdeals";
 import ProductList from "./productListing/productlist";
 import { useEffect, useState } from "react";
 import { fetchProductListings } from "../../components/dummyData/productDummyData,";
-import { fetchSpecialProduct } from "../../components/dummyData/specailTopProductDummyData";
+
 
 import { fetchCategories } from "../../components/dummyData/categoriDummyData";
 
@@ -14,7 +14,6 @@ import { fetchCategories } from "../../components/dummyData/categoriDummyData";
 function Homepage() {
 
     const [productData, setProductData] = useState([])
-
     const [CategoryData, setCategoryData] = useState([])
 
     const getProduct = async () => {
@@ -26,16 +25,7 @@ function Homepage() {
         }
 
     }
-    const getTopProduct = async () => {
-        try {
-            const res = await fetchSpecialProduct()
-            setSpecailproductData(res?.data)
-        } catch (error) {
-            console.log(error.message);
 
-        }
-
-    }
     const getCategories = async () => {
         try {
             const res = await fetchCategories()
@@ -49,7 +39,6 @@ function Homepage() {
 
     useEffect(() => {
         getProduct()
-        getTopProduct()
         getCategories()
     }, []);
 
@@ -64,8 +53,6 @@ function Homepage() {
                 categoriesData={CategoryData}
             />
             <TopDealsOfTheDay />
-            {/* <MarketingBannerZone /> */}
-            {/* <SuperSaverBannerZone /> */}
             <ProductList
                 productData={productData}
                 backgroundColor={"backgroundPurpleSoft.main"}
