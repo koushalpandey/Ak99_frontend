@@ -1,7 +1,7 @@
 import { Box, Typography, Button, Rating, Stack, } from "@mui/material";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import MarketingBannerZone from "../../../components/Trust/ourtrust";
+
 
 const ProductInformation = ({ productData }) => {
 
@@ -105,16 +105,7 @@ const ProductInformation = ({ productData }) => {
       >
         {productData?.description}
       </Typography>
-
-
-
-      {/* Trust Badges Footer */}
-      <Box>
-        <MarketingBannerZone />
-      </Box>
-
-
-      <Stack
+     <Stack
         direction="row"
         spacing={1.5}
         alignItems="center"

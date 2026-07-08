@@ -6,10 +6,10 @@ import TopDealsOfTheDay from "./offerDeals/topdeals";
 import ProductList from "./productListing/productlist";
 import { useEffect, useState } from "react";
 import { fetchProductListings } from "../../components/dummyData/productDummyData,";
-
-
 import { fetchCategories } from "../../components/dummyData/categoriDummyData";
 import PromoBanners from "./promobanner";
+import MarketingBannerZone from "../../components/Trust/ourtrust";
+
 
 
 function Homepage() {
@@ -50,6 +50,8 @@ function Homepage() {
         <Container maxWidth="xl" disableGutters>
             <Subheader />
             <SliderComponent />
+            <MarketingBannerZone />
+
             <CategoryNav
                 categoriesData={CategoryData}
             />
