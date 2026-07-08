@@ -8,9 +8,15 @@ function DesktopHeader() {
     return (
         <Box
             sx={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                right: 0,
                 width: "100%",
+                height: 80,
                 bgcolor: "#fff",
                 borderBottom: "1px solid #e5e7eb",
+                zIndex: 999,
 
             }}
         >

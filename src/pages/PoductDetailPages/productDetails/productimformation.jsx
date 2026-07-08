@@ -1,16 +1,9 @@
-import { useState } from "react";
-import { Box, Typography, Button, Rating, Stack, IconButton, } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import { Box, Typography, Button, Rating, Stack, } from "@mui/material";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MarketingBannerZone from "../../../components/Trust/ourtrust";
 
 const ProductInformation = ({ productData }) => {
-
-
-
-  const [quantity, setQuantity] = useState(1);
 
   return (
     <Box
@@ -48,7 +41,7 @@ const ProductInformation = ({ productData }) => {
           |
         </Typography>
         <Typography
-        sx={{
+          sx={{
             color: "#4a5568",
             textDecoration: "underline",
             cursor: "pointer",
@@ -62,11 +55,11 @@ const ProductInformation = ({ productData }) => {
       {/* Pricing Section */}
       <Stack direction="row" alignItems="center" spacing={1.5} sx={{ mb: 0.5 }}>
         <Typography sx={{ color: "dark.main", fontSize: "22px" }}>
-            ₹ {productData?.price}
+          ₹ {productData?.price}
         </Typography>
 
         <Typography variant="body1" sx={{ textDecoration: "line-through", color: "#718096" }}>
-         ₹ {productData?.comparePrice}
+          ₹ {productData?.comparePrice}
         </Typography>
         <Box
           sx={{
@@ -110,7 +103,7 @@ const ProductInformation = ({ productData }) => {
           fontSize: "16px",
         }}
       >
-          {productData?.description}
+        {productData?.description}
       </Typography>
 
 
@@ -131,82 +124,6 @@ const ProductInformation = ({ productData }) => {
           gap: 1.5
         }}
       >
-        {/* Glassmorphic Quantity Counter */}
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="center"
-          sx={{
-            border: "1px solid rgba(203, 213, 224, 0.4)",
-            borderRadius: "8px",
-            backgroundColor: "rgba(226, 232, 240, 0.4)",
-            backdropFilter: "blur(8px)",
-            WebkitBackdropFilter: "blur(8px)",
-            height: "44px",
-            boxSizing: "border-box",
-            overflow: "hidden",
-            boxShadow: "0 4px 30px rgba(0, 0, 0, 0.03)",
-            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-            "&:hover": {
-              backgroundColor: "rgba(226, 232, 240, 0.6)",
-              borderColor: "rgba(203, 213, 224, 0.8)",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05), inset 0 0 8px rgba(255, 255, 255, 0.5)",
-            }
-          }}
-        >
-          <IconButton
-            size="small"
-            onClick={() => setQuantity(Math.max(1, quantity - 1))}
-            sx={{
-              p: 0,
-              width: "40px",
-              height: "100%",
-              borderRadius: 0,
-              transition: "all 0.2s ease-in-out",
-              "&:hover": {
-                backgroundColor: "rgba(203, 213, 224, 0.5)",
-                "& .MuiSvgIcon-root": { transform: "scale(1.1)" }
-              },
-              "&:active": { transform: "scale(0.9)" }
-            }}
-          >
-            <RemoveIcon sx={{ fontSize: "1rem", color: "#4a5568", transition: "transform 0.2s" }} />
-          </IconButton>
-
-          <Typography
-            sx={{
-              minWidth: "36px",
-              textAlign: "center",
-              fontWeight: 600,
-              fontSize: "0.95rem",
-              color: "#2d3748",
-              userSelect: "none"
-            }}
-          >
-            {quantity}
-          </Typography>
-
-          <IconButton
-            size="small"
-            onClick={() => setQuantity(quantity + 1)}
-            sx={{
-              p: 0,
-              width: "40px",
-              height: "100%",
-              borderRadius: 0,
-              transition: "all 0.2s ease-in-out",
-              "&:hover": {
-                backgroundColor: "rgba(203, 213, 224, 0.5)",
-                "& .MuiSvgIcon-root": { transform: "scale(1.1)" }
-              },
-              "&:active": { transform: "scale(0.9)" }
-            }}
-          >
-            <AddIcon sx={{ fontSize: "1rem", color: "#4a5568", transition: "transform 0.2s" }} />
-          </IconButton>
-        </Stack>
-
-
         <Button
           variant="contained"
           startIcon={<ShoppingBagIcon />}
