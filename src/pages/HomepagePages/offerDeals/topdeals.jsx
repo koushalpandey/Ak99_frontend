@@ -134,20 +134,6 @@ export default function TopDealsOfTheDay() {
                     </Typography>
                 </Box>
 
-                <Typography
-                    sx={{
-                        fontSize: '0.85rem',
-                        fontWeight: 'bold',
-                        color: '#424242',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 0.5,
-                        '&:hover': { textDecoration: 'underline' }
-                    }}
-                >
-                    View All Deals ➔
-                </Typography>
             </Box>
 
             {/* Navigation Arrows */}
