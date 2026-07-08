@@ -32,10 +32,8 @@ console.log(userData);
         py: 1,
       }}
     >
-      {/* Wishlist Item */}
+
       <Box
-      component={NavLink}
-      to={'wishlist'}
       sx={{
           display: "flex",
           alignItems: "center",
