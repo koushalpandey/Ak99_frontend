@@ -3,20 +3,18 @@ import Subheader from "./subheader/subheader";
 import SliderComponent from "./slider/slider";
 import CategoryNav from "./categories/categories";
 import TopDealsOfTheDay from "./offerDeals/topdeals";
-import MarketingBannerZone from "../../components/Trust/ourtrust";
-import SuperSaverBannerZone from "./supersaver/superSaver.component";
 import ProductList from "./productListing/productlist";
 import { useEffect, useState } from "react";
 import { fetchProductListings } from "../../components/dummyData/productDummyData,";
 import { fetchSpecialProduct } from "../../components/dummyData/specailTopProductDummyData";
-import SpecailProductPicks from "../../components/useFullcomponents/DesignComponent/productCardDesign/specialproductDesign";
+
 import { fetchCategories } from "../../components/dummyData/categoriDummyData";
-// import ProductCategory from "./specificCategories/productCategorie";
+
 
 function Homepage() {
 
     const [productData, setProductData] = useState([])
-    const [specailproductData, setSpecailproductData] = useState([])
+
     const [CategoryData, setCategoryData] = useState([])
 
     const getProduct = async () => {
@@ -72,11 +70,8 @@ function Homepage() {
                 productData={productData}
                 backgroundColor={"backgroundPurpleSoft.main"}
             />
-            <SpecailProductPicks
-                productData={specailproductData}
 
-            />
-            {/* <ProductCategory /> */}
+
         </Container>
 
     );
