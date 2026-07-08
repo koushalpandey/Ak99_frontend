@@ -4,7 +4,10 @@ import {
   CardMedia,
   Typography,
   Box,
+  IconButton,
 } from "@mui/material";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import StarIcon from "@mui/icons-material/Star";
 
 const ProductCard = ({
   image,
@@ -12,6 +15,8 @@ const ProductCard = ({
   currentPrice,
   originalPrice,
   discount,
+  isNew,
+  rating,
 }) => {
   return (
     <Card
@@ -22,6 +27,8 @@ const ProductCard = ({
         flexShrink: 0,
         display: "flex",
         flexDirection: "column",
+        position: "relative",
+        backgroundColor: "#F5F5F5",
         transition: "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
         "&:hover": {
           transform: "translateY(-4px)",
@@ -29,14 +36,70 @@ const ProductCard = ({
         },
       }}
     >
-      {/* Product Image */}
+      {discount && (
+        <Box
+          sx={{
+            position: "absolute",
+            top: 12,
+            left: 12,
+            backgroundColor: "#FF6B4A",
+            color: "#FFF",
+            fontSize: "0.65rem",
+            fontWeight: 700,
+            px: 1,
+            py: 0.4,
+            borderRadius: "10px",
+            zIndex: 2,
+          }}
+        >
+          {discount}
+        </Box>
+      )}
+
+      {isNew && (
+        <Box
+          sx={{
+            position: "absolute",
+            top: 12,
+            left: 12,
+            backgroundColor: "#7AA27D",
+            color: "#FFF",
+            fontSize: "0.65rem",
+            fontWeight: 700,
+            px: 1,
+            py: 0.4,
+            borderRadius: "10px",
+            zIndex: 2,
+          }}
+        >
+          NEW
+        </Box>
+      )}
+
+      <IconButton
+        size="small"
+        sx={{
+          position: "absolute",
+          top: 12,
+          right: 12,
+          backgroundColor: "#FFF",
+          boxShadow: "0px 2px 6px rgba(0,0,0,0.05)",
+          zIndex: 2,
+          p: "5px",
+          "&:hover": { backgroundColor: "#FFF" },
+        }}
+      >
+        <FavoriteBorderIcon sx={{ fontSize: "1rem", color: "#666" }} />
+      </IconButton>
+
       <Box
         sx={{
-          p: 1,
+          p: 2,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "170px",
+          height: 190,
+          width:200
         }}
       >
         <CardMedia
@@ -44,24 +107,27 @@ const ProductCard = ({
           image={image}
           alt={title}
           sx={{
-            borderRadius: "12px",
-            objectFit: "contain",
+            objectFit: "cover",
             maxHeight: "100%",
             maxWidth: "100%",
           }}
         />
       </Box>
 
-      {/* Product Details */}
-      <CardContent sx={{ pt: 0, px: 2, pb: "12px !important" }}>
+      <CardContent sx={{ pt: 1, px: 1.5, pb: "12px !important", flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
         <Typography
           variant="body1"
-          noWrap
           sx={{
             fontWeight: 500,
-            color: "black.main",
-            fontSize: "0.9rem",
-            mb: 0.5,
+            color: "#1A1A1A",
+            fontSize: "0.8rem",
+            lineHeight: 1.3,
+            mb: 1,
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+            height: "2.6em",
           }}
         >
           {title}
@@ -70,44 +136,45 @@ const ProductCard = ({
         <Box
           sx={{
             display: "flex",
-            alignItems: "baseline",
-            gap: 1,
-            mb: 0.5,
+            alignItems: "center",
+            justifyContent: "space-between",
+            mt: "auto",
           }}
         >
-          <Typography
-            sx={{
-              fontWeight: 600,
-              color: "custom.danger",
-              fontSize: "1rem",
-            }}
-          >
-            ₹{currentPrice}
-          </Typography>
-
-          {originalPrice && (
+          <Box sx={{ display: "flex", alignItems: "baseline", gap: 0.5 }}>
             <Typography
-              variant="body2"
               sx={{
-                color: "#9E9E9E",
-                textDecoration: "line-through",
-                fontSize: "0.8rem",
+                fontWeight: 700,
+                color: "#1A1A1A",
+                fontSize: "0.95rem",
               }}
             >
-              ₹{originalPrice}
+              ${currentPrice}
             </Typography>
+
+            {originalPrice && (
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "#9E9E9E",
+                  textDecoration: "line-through",
+                  fontSize: "0.75rem",
+                }}
+              >
+                ${originalPrice}
+              </Typography>
+            )}
+          </Box>
+
+          {rating && (
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.3 }}>
+              <StarIcon sx={{ color: "#FFB400", fontSize: "0.9rem" }} />
+              <Typography sx={{ fontSize: "0.75rem", fontWeight: 600, color: "#666" }}>
+                {rating}
+              </Typography>
+            </Box>
           )}
         </Box>
-
-        <Typography
-          sx={{
-            color: "primary.main",
-            fontWeight: 500,
-            fontSize: "0.75rem",
-          }}
-        >
-          {discount}
-        </Typography>
       </CardContent>
     </Card>
   );

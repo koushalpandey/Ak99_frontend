@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import {
     Box,
     Typography,
-    Button,
+
     IconButton
 } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -154,18 +154,7 @@ export default function TopDealsOfTheDay() {
                     </Box>
                 </Box>
 
-                <Button
-                    variant="text"
-                    sx={{
-                        color: 'primary.main',
-                        fontWeight: 500,
-                        textTransform: 'none',
-                        fontSize: '0.95rem',
-                        '&:hover': { backgroundColor: 'transparent', textDecoration: 'underline' }
-                    }}
-                >
-                    View All
-                </Button>
+
             </Box>
 
 

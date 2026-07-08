@@ -1,8 +1,16 @@
 
-import { Box, Typography, Link, Card, CardMedia, CardContent } from "@mui/material";
+import { Box, Typography, Card, CardMedia, CardContent } from "@mui/material";
+import useProductListStore from "../../../../store/productListStores/homepageProductlist";
 
 
-export default function SpecailProductPicks({ productData }) {
+export default function SpecailProductPicks() {
+     const ProductData = useProductListStore((state) => state?.Data);
+    const loading = useProductListStore((state) => state?.loading);
+    const error = useProductListStore((state) => state?.error);
+    const fetchProductList = useProductListStore((state) => state?.fetchProductList);
+
+    console.log(ProductData);
+
     return (
         <Box sx={{ backgroundColor: "#fff", width: "100%", }}>
             {/* Header Section */}
@@ -10,15 +18,9 @@ export default function SpecailProductPicks({ productData }) {
                 <Typography
                     sx={{ fontWeight: 600, color: "#000" }}
                 >
-                    Top Picks For You
+                   {}
                 </Typography>
-                <Link
-                    href="#"
-                    underline="none"
-                    sx={{ fontWeight: 600, color: "#1976d2", fontSize: "14px", fontFamily: "Be Vietnam Pro" }}
-                >
-                    View All
-                </Link>
+
             </Box>
 
 
@@ -33,7 +35,7 @@ export default function SpecailProductPicks({ productData }) {
                     scrollbarWidth: "none",
                 }}
             >
-                {productData?.map((product) => (
+                {ProductData?.map((product) => (
                     <Card
                         key={product?.id}
                         sx={{
@@ -50,7 +52,7 @@ export default function SpecailProductPicks({ productData }) {
                         <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 2, height: 140 }}>
                             <CardMedia
                                 component="img"
-                                image={product?.image}
+                                image={product?.images[0]?.url}
                                 alt={product?.title}
                                 sx={{ objectFit: "cover", maxHeight: "100%", maxWidth: "100%" }}
                             />
@@ -62,7 +64,7 @@ export default function SpecailProductPicks({ productData }) {
                                 variant="body2"
                                 sx={{ fontWeight: 500, color: "#212121", mb: 0.5, fontSize: "14px" }}
                             >
-                                {product?.title}
+                                {product?.name}
                             </Typography>
 
                             {/* Pricing Row */}
@@ -77,7 +79,7 @@ export default function SpecailProductPicks({ productData }) {
                                     variant="body2"
                                     sx={{ textDecoration: "line-through", color: "#9e9e9e", fontSize: "13px" }}
                                 >
-                                    ₹{product.originalPrice}
+                                    ₹{product?.comparePrice}
                                 </Typography>
                             </Box>
 

@@ -12,7 +12,7 @@ const useProductListStore = create((set) => ({
     try {
       const response = await getProductList();
       set({
-        Data: response.data,
+        Data: response.data?.products,
         loading: false,
       });
     } catch (error) {

@@ -2,7 +2,7 @@ import { Grid, Container } from "@mui/material";
 import ProductImages from "./productDetails/productImages";
 import ProductInformation from "./productDetails/productimformation";
 import Specification from "./productDetails/specification";
-import ProductCategory from "../HomepagePages/specificCategories/productCategorie";
+
 import ReviewSection from "../../components/useFullcomponents/DesignComponent/reviewDesign/userReview";
 import ProductBreadcrumb from "../../components/useFullcomponents/breadcrumb/productBreadcrumb";
 import useProductDetailStore from "../../store/productDetailStores/store.js";
@@ -57,7 +57,7 @@ const ProductDetailsPage = () => {
         </Grid>
       </Grid>
 
-      <ProductCategory />
+
     </Container>
   );
 };

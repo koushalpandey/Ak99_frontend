@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import {
     Box,
     Typography,
-    Button,
     IconButton
 } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -11,7 +10,7 @@ import ProductCard from '../../../components/useFullcomponents/DesignComponent/p
 
 
 
-export default function ProductList({ productData, backgroundColor }) {
+export default function ProductList({ productData }) {
     const scrollContainerRef = useRef(null);
     const handleScroll = (direction) => {
         if (scrollContainerRef.current) {
@@ -26,9 +25,6 @@ export default function ProductList({ productData, backgroundColor }) {
     return (
         <Box
             sx={{
-                // backgroundColor: 'backgroundPurpleSoft.main',
-                backgroundColor: backgroundColor,
-                padding: '24px',
                 borderRadius: '16px',
                 maxWidth: '100%',
                 margin: '20px auto',
@@ -62,18 +58,7 @@ export default function ProductList({ productData, backgroundColor }) {
 
                 </Box>
 
-                <Button
-                    variant="text"
-                    sx={{
-                        color: 'primary.main',
-                        fontWeight: 500,
-                        textTransform: 'none',
-                        fontSize: '0.95rem',
-                        '&:hover': { backgroundColor: 'transparent', textDecoration: 'underline' }
-                    }}
-                >
-                    View All
-                </Button>
+
             </Box>
 
 

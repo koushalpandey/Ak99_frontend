@@ -11,7 +11,7 @@ import { fetchProductListings } from "../../components/dummyData/productDummyDat
 import { fetchSpecialProduct } from "../../components/dummyData/specailTopProductDummyData";
 import SpecailProductPicks from "../../components/useFullcomponents/DesignComponent/productCardDesign/specialproductDesign";
 import { fetchCategories } from "../../components/dummyData/categoriDummyData";
-import ProductCategory from "./specificCategories/productCategorie";
+// import ProductCategory from "./specificCategories/productCategorie";
 
 function Homepage() {
 
@@ -66,8 +66,8 @@ function Homepage() {
                 categoriesData={CategoryData}
             />
             <TopDealsOfTheDay />
-            <MarketingBannerZone />
-            <SuperSaverBannerZone />
+            {/* <MarketingBannerZone /> */}
+            {/* <SuperSaverBannerZone /> */}
             <ProductList
                 productData={productData}
                 backgroundColor={"backgroundPurpleSoft.main"}
@@ -76,7 +76,7 @@ function Homepage() {
                 productData={specailproductData}
 
             />
-            <ProductCategory />
+            {/* <ProductCategory /> */}
         </Container>
 
     );
