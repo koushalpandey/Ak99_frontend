@@ -7,71 +7,86 @@ import {
 } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ProductCard from '../../../components/useFullcomponents/DesignComponent/productCardDesign/productcard';
+import { SpecialOfferCard } from '../../../components/useFullcomponents/DesignComponent/productCardDesign/specailofferCard';
+
 
 
 const dealsData = [
     {
         id: 1,
-        title: 'Bluetooth Headphones',
+        title: 'Sony WH-1000XM5',
+        subtitle: 'Wireless Noise Cancelling',
         image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&q=80',
-        currentPrice: 299,
-        originalPrice: 999,
-        discount: '70% OFF',
+        currentPrice: 199.99,
+        originalPrice: 399.99,
+        discount: '50% OFF',
+        rating: 4.8,
+        isFirst: true, // Unique purple/gradient treatment
     },
     {
         id: 2,
-        title: 'Smart Watch',
+        title: 'Apple Watch Series 9',
+        subtitle: 'GPS, 45mm',
         image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&q=80',
-        currentPrice: 399,
-        originalPrice: 1299,
-        discount: '69% OFF',
+        currentPrice: 299.00,
+        originalPrice: 499.00,
+        discount: '40% OFF',
+        rating: 4.9,
     },
     {
         id: 3,
-        title: 'Smart',
-        image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&q=80',
-        currentPrice: 299,
-        originalPrice: 999,
-        discount: '70% OFF',
+        title: 'Canon EOS R50',
+        subtitle: 'Mirrorless Camera',
+        image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=300&q=80',
+        currentPrice: 649.00,
+        originalPrice: 999.00,
+        discount: '35% OFF',
+        rating: 4.7,
     },
     {
         id: 4,
-        title: 'Sneakers',
-        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80',
-        currentPrice: 49,
-        originalPrice: 199,
-        discount: '75% OFF',
+        title: 'JBL Flip 6',
+        subtitle: 'Portable Bluetooth Speaker',
+        image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=300&q=80',
+        currentPrice: 87.99,
+        originalPrice: 159.99,
+        discount: '45% OFF',
+        rating: 4.6,
     },
     {
         id: 5,
-        title: 'Sneakers',
-        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80',
-        currentPrice: 49,
-        originalPrice: 199,
-        discount: '75% OFF',
+        title: 'Bleu de Chanel',
+        subtitle: 'Eau de Parfum',
+        image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=300&q=80',
+        currentPrice: 89.99,
+        originalPrice: 129.99,
+        discount: '45% OFF',
+        rating: 4.8,
     },
     {
         id: 6,
-        title: 'Sneakers',
-        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80',
-        currentPrice: 49,
-        originalPrice: 199,
-        discount: '75% OFF',
+        title: 'Bleu de Chanel',
+        subtitle: 'Eau de Parfum',
+        image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=300&q=80',
+        currentPrice: 89.99,
+        originalPrice: 129.99,
+        discount: '45% OFF',
+        rating: 4.8,
     },
     {
         id: 7,
-        title: 'Sneakers',
-        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80',
-        currentPrice: 49,
-        originalPrice: 199,
-        discount: '75% OFF',
+        title: 'JBL Flip 6',
+        subtitle: 'Portable Bluetooth Speaker',
+        image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=300&q=80',
+        currentPrice: 87.99,
+        originalPrice: 159.99,
+        discount: '45% OFF',
+        rating: 4.6,
     },
 ];
 
 export default function TopDealsOfTheDay() {
     const scrollContainerRef = useRef(null);
-
 
     const handleScroll = (direction) => {
         if (scrollContainerRef.current) {
@@ -86,8 +101,6 @@ export default function TopDealsOfTheDay() {
     return (
         <Box
             sx={{
-                backgroundColor: 'topDeal.main',
-                padding: '24px',
                 borderRadius: '16px',
                 maxWidth: '100%',
                 margin: '20px auto',
@@ -106,95 +119,74 @@ export default function TopDealsOfTheDay() {
                     gap: 2
                 }}
             >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexGrow: 1 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexGrow: 1 }}>
                     <Typography
                         sx={{
-                            fontWeight: 600,
-                            color: 'black.main',
-                            fontSize: '1.4rem'
-                        }}
-                    >
-                        Deals of the Day
-                    </Typography>
-
-
-                    <Box
-                        sx={{
+                            fontWeight: 'bold',
+                            color: '#1A1A1A',
+                            fontSize: '1.5rem',
                             display: 'flex',
                             alignItems: 'center',
-                            border: '1px solid #F97316',
-                            borderRadius: '20px',
-                            overflow: 'hidden',
-                            backgroundColor: '#FFF'
+                            gap: 1
                         }}
                     >
-                        <Box
-                            sx={{
-                                backgroundColor: 'secondary.main',
-                                color: '#FFF',
-                                px: 1.5,
-                                py: 0.5,
-                                fontWeight: 500,
-                                fontSize: '0.85rem',
-                            }}
-                        >
-                            Ends in
-                        </Box>
-                        <Typography
-                            sx={{
-                                px: 1.5,
-                                color: 'secondary.main',
-                                fontWeight: 500,
-                                letterSpacing: '1px',
-                                fontSize: '0.9rem'
-                            }}
-                        >
-                            12 : 45 : 30
-                        </Typography>
-                    </Box>
+                        ⚡ Special Offer Products
+                    </Typography>
                 </Box>
 
-
+                <Typography
+                    sx={{
+                        fontSize: '0.85rem',
+                        fontWeight: 'bold',
+                        color: '#424242',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 0.5,
+                        '&:hover': { textDecoration: 'underline' }
+                    }}
+                >
+                    View All Deals ➔
+                </Typography>
             </Box>
 
-
+            {/* Navigation Arrows */}
             <IconButton
                 className="nav-arrow"
                 onClick={() => handleScroll('left')}
                 sx={{
                     position: 'absolute',
-                    left: '8px',
+                    left: '-15px',
                     top: '55%',
                     transform: 'translateY(-50%)',
                     backgroundColor: '#FFFFFF',
-                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)',
+                    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.15)',
                     zIndex: 10,
                     opacity: 0,
                     transition: 'opacity 0.2s ease-in-out, background-color 0.2s',
                     '&:hover': { backgroundColor: '#F5F5F5' }
                 }}
             >
-                <ArrowBackIosNewIcon fontSize="small" sx={{ color: 'black.main', mr: '2px' }} />
+                <ArrowBackIosNewIcon fontSize="small" sx={{ color: '#000', mr: '2px' }} />
             </IconButton>
-
 
             <IconButton
                 className="nav-arrow"
                 onClick={() => handleScroll('right')}
                 sx={{
                     position: 'absolute',
-                    right: '8px',
+                    right: '-15px',
                     top: '55%',
                     transform: 'translateY(-50%)',
                     backgroundColor: '#FFFFFF',
-                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)',
+                    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.15)',
                     zIndex: 10,
                     opacity: 0,
                     transition: 'opacity 0.2s ease-in-out, background-color 0.2s',
                     '&:hover': { backgroundColor: '#F5F5F5' }
                 }}
             >
-                <ArrowForwardIosIcon fontSize="small" sx={{ color: 'black.main', ml: '2px' }} />
+                <ArrowForwardIosIcon fontSize="small" sx={{ color: '#000', ml: '2px' }} />
             </IconButton>
 
             {/* Product Scrollable Container */}
@@ -204,9 +196,9 @@ export default function TopDealsOfTheDay() {
                     display: 'flex',
                     flexDirection: 'row',
                     flexWrap: 'nowrap',
-                    gap: 1.5,
+                    gap: 2,
                     overflowX: 'auto',
-                    py: 1,
+                    py: 2,
                     px: 0.5,
                     scrollbarWidth: 'none',
                     '&::-webkit-scrollbar': { display: 'none' },
@@ -214,14 +206,7 @@ export default function TopDealsOfTheDay() {
                 }}
             >
                 {dealsData.map((item) => (
-                    <ProductCard
-                        key={item.id}
-                        image={item.image}
-                        title={item.title}
-                        currentPrice={item.currentPrice}
-                        originalPrice={item.originalPrice}
-                        discount={item.discount}
-                    />
+                    <SpecialOfferCard key={item.id} item={item} />
                 ))}
             </Box>
         </Box>

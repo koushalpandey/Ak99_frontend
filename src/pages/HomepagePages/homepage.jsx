@@ -9,6 +9,7 @@ import { fetchProductListings } from "../../components/dummyData/productDummyDat
 
 
 import { fetchCategories } from "../../components/dummyData/categoriDummyData";
+import PromoBanners from "./promobanner";
 
 
 function Homepage() {
@@ -46,13 +47,14 @@ function Homepage() {
 
 
     return (
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" disableGutters>
             <Subheader />
             <SliderComponent />
             <CategoryNav
                 categoriesData={CategoryData}
             />
             <TopDealsOfTheDay />
+            <PromoBanners />
             <ProductList
                 productData={productData}
                 backgroundColor={"backgroundPurpleSoft.main"}

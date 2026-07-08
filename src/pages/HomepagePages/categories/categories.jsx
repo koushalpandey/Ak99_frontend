@@ -80,9 +80,9 @@ export default function CategoryNav() {
 
                         <Box
                             sx={{
-                                width: 104,
-                                height: 110,
-                                borderRadius: '18px',
+                                width: 90,
+                                height: 90,
+                                borderRadius: '50%',
                                 backgroundColor: '#f5f5f5',
                                 display: 'flex',
                                 justifyContent: 'center',
