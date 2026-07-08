@@ -11,7 +11,7 @@ const useAuthStore = create((set) => ({
     try {
       const response = await getUserData();
       set({
-        Data: response?.data,
+        Data: response?.data?.user,
 
       });
     } catch (error) {

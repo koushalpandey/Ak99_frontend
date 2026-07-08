@@ -40,7 +40,7 @@ const ProductDetailsPage = () => {
 
           />
           <ProductImages
-            userId={userData?.user?.id}
+            userId={userData?.id}
             productId={ProductDetail?.id}
             Productimages={ProductDetail?.images}
           />
