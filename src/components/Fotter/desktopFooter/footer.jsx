@@ -3,7 +3,7 @@ import { footerLinks } from "../../dummyData/footerData";
 
 export default function Footer() {
     return (
-        <Box sx={{ backgroundColor: "#1a202c", color: "#a0aec0", pt: 6, pb: 3, borderTop: "1px solid #000" }}>
+        <Box sx={{ backgroundColor: "secondary.main", color: "dark.main", pt: 6, pb: 3, borderTop: "1px solid #000" }}>
             <Container maxWidth={false}>
                 <Grid container spacing={4}>
 
@@ -21,7 +21,7 @@ export default function Footer() {
                         </Typography>
 
                         {/* Newsletter SignUp Section */}
-                        <Typography variant="subtitle2" sx={{ color: "#ffffff", fontWeight: 600, mb: 1 }}>
+                        <Typography variant="subtitle2" sx={{ color: "dark.main", fontWeight: 600, mb: 1 }}>
                             Subscribe to our newsletter
                         </Typography>
                         <Box sx={{ display: "flex", gap: 1 }}>
@@ -56,8 +56,8 @@ export default function Footer() {
                     {footerLinks.map((section, index) => (
                         <Grid size xs={6} sm={4} md={2} key={index}>
                             <Typography
-                                variant="subtitle1"
-                                sx={{ color: "#ffffff", fontWeight: 700, mb: 2, fontSize: "15px", fontFamily: "sans-serif" }}
+
+                                sx={{ color: "primary.main", fontWeight: 500, mb: 2, fontSize: "14px",  }}
                             >
                                 {section.title}
                             </Typography>
@@ -68,10 +68,10 @@ export default function Footer() {
                                         href={link.url}
                                         underline="none"
                                         sx={{
-                                            color: "#a0aec0",
+                                            color: "black.main",
                                             fontSize: "14px",
                                             transition: "color 0.2s",
-                                            "&:hover": { color: "#ffffff" }
+
                                         }}
                                     >
                                         {link.label}

@@ -103,7 +103,7 @@ export const SpecialOfferCard = ({ item }) => {
 
             {/* Price Info */}
             <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1, mb: 1.5 }}>
-                <Typography sx={{ fontSize: '1.1rem', fontWeight: 'bold', color: isFirst ? '#FFF' : '#000' }}>
+                <Typography sx={{ fontSize: '1.1rem', fontWeight: 500, color: isFirst ? '#FFF' : 'black.main' }}>
                     ${currentPrice.toFixed(2)}
                 </Typography>
                 <Typography sx={{ fontSize: '0.8rem', textDecoration: 'line-through', color: isFirst ? '#B0BEC5' : '#9E9E9E' }}>
@@ -113,7 +113,7 @@ export const SpecialOfferCard = ({ item }) => {
 
             {/* Countdown Mini Timer Container */}
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                <Typography sx={{ fontSize: '0.65rem', fontWeight: 'bold', textTransform: 'uppercase', color: isFirst ? '#E0E0E0' : '#757575' }}>
+                <Typography sx={{ fontSize: '10.5px', fontWeight:500,  color: isFirst ? '#FFF': "black.main" }}>
                     Ends In
                 </Typography>
                 <Box sx={{ display: 'flex', gap: 0.5 }}>
@@ -123,8 +123,8 @@ export const SpecialOfferCard = ({ item }) => {
                             sx={{
                                 background: isFirst ? 'rgba(255,255,255,0.2)' : '#FFEBEB',
                                 color: isFirst ? '#FFF' : '#FF4D4D',
-                                fontSize: '0.7rem',
-                                fontWeight: 'bold',
+                                fontSize: '12px',
+                                fontWeight:500,
                                 px: 0.6,
                                 py: 0.2,
                                 borderRadius: '4px',
@@ -144,12 +144,9 @@ export const SpecialOfferCard = ({ item }) => {
                 sx={{
                     textTransform: 'none',
                     borderRadius: '12px',
-                    fontWeight: 'bold',
-                    fontSize: '0.85rem',
-                    py: 1,
-                    background: isFirst
-                        ? 'linear-gradient(90deg, #FF2A85 0%, #FF7300 100%)'
-                        : 'linear-gradient(90deg, #FF416C 0%, #FF4B2B 100%)',
+                     fontSize: '12px',
+                    color:'black.main',
+                    bgcolor: "secondary.main",
                     boxShadow: 'none',
                     '&:hover': {
                         opacity: 0.9,

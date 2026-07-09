@@ -14,7 +14,7 @@ function DesktopHeader() {
                 right: 0,
                 width: "100%",
                 height: 80,
-                bgcolor: "#fff",
+                bgcolor: "secondary.main",
                 borderBottom: "1px solid #e5e7eb",
                 zIndex: 999,
 
