@@ -31,7 +31,7 @@ function DesktopHeader() {
                 >
                     <Box
                         sx={{
-                            width: 260,
+                            width: 280,
                             flexShrink: 0,
                             height: "100%",
                             display: "flex",

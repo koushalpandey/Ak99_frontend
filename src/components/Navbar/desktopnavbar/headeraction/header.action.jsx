@@ -3,12 +3,11 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { NavLink } from "react-router-dom";
 import useAuthStore from "../../../../store/userStore/store.js";
 import { useEffect } from "react";
+import wishlistimg from '../../../../assets/shopping-basket.png'
+import addTocardimg from '../../../../assets/shopping-cart.png'
 
 
 
@@ -51,7 +50,7 @@ function HeaderActions() {
         />
         <Typography
           sx={{
-            fontSize: "13.5px",
+            fontSize: "12px",
             fontWeight: 500,
             color: "white.main",
 
@@ -67,25 +66,30 @@ function HeaderActions() {
         sx={{
           display: "flex",
           alignItems: "center",
-          gap: "10px",
+          gap: "5px",
           cursor: "pointer",
           textDecoration: "none",
         }}
       >
-        <FavoriteBorderIcon
+        <Avatar
+          src={wishlistimg}
+          alt="wishlist"
           sx={{
-            fontSize: "22px",
-            color: "primary.main",
+            width: 24,
+            height: 24,
+            "& img": {
+              filter:
+                "brightness(0) saturate(100%) invert(32%) sepia(95%) saturate(1955%) hue-rotate(204deg) brightness(97%) contrast(94%)",
+            },
 
           }}
         />
         <Typography
           sx={{
-            fontSize: "13.5px",
+            fontSize: "12px",
             fontWeight: 500,
             color: "white.main",
-
-
+            mt: 0.8
           }}
         >
           Wishlist
@@ -101,22 +105,28 @@ function HeaderActions() {
         sx={{
           display: "flex",
           alignItems: "center",
-          gap: "5px",
+          gap: "8px",
           cursor: "pointer",
           textDecoration: "none",
         }}
       >
-        <ShoppingCartOutlinedIcon
+        <Avatar
+          src={addTocardimg}
+          alt="wishlist"
           sx={{
-            fontSize: "22px",
-            color: "primary.main",
+            width: 32,
+            height: 32,
+
+
           }}
         />
+
         <Typography
           sx={{
-            fontSize: "13.5px",
+            fontSize: "12px",
             fontWeight: 500,
             color: "white.main",
+            mt:0.8
 
           }}
         >
