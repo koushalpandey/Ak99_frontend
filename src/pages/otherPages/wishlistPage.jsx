@@ -18,8 +18,8 @@ import { NavLink } from 'react-router-dom';
 
 export default function WishlistComponent() {
   const Data = useWishListStore((state) => state?.Data);
-  const loading = useWishListStore((state) => state?.loading);
-  const error = useWishListStore((state) => state?.error);
+  // const loading = useWishListStore((state) => state?.loading);
+  // const error = useWishListStore((state) => state?.error);
   const fetchWishList = useWishListStore((state) => state?.fetchWishList);
 
 
@@ -28,7 +28,7 @@ export default function WishlistComponent() {
   }, [fetchWishList])
 
   return (
-    <Container maxWidth={'lg'} sx={{ py: 4, fontFamily: 'sans-serif' }}>
+    <Container disableGutters>
 
       <Box
         sx={{

@@ -16,9 +16,6 @@ function HeaderActions() {
   const userData = useAuthStore((state) => state?.Data);
   const fetchUserData = useAuthStore((state) => state?.fetchUserData);
 
-
-
-
   useEffect(() => {
     fetchUserData()
   }, [fetchUserData])
@@ -49,7 +46,7 @@ function HeaderActions() {
           sx={{
             width: 30,
             height: 30,
-            border:"2px solid #0D6EFD"
+            border: "2px solid #0D6EFD"
           }}
         />
         <Typography
@@ -99,11 +96,14 @@ function HeaderActions() {
 
       {/* Cart Item */}
       <Box
+        component={NavLink}
+        to={'checkout'}
         sx={{
           display: "flex",
           alignItems: "center",
           gap: "5px",
-          cursor: "pointer"
+          cursor: "pointer",
+          textDecoration: "none",
         }}
       >
         <ShoppingCartOutlinedIcon
@@ -116,7 +116,7 @@ function HeaderActions() {
           sx={{
             fontSize: "13.5px",
             fontWeight: 500,
-            color: "text.black",
+            color: "black.main",
 
           }}
         >
