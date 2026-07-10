@@ -20,7 +20,7 @@ function DesktopHeader() {
 
             }}
         >
-            <Container maxWidth={false}>
+            <Container maxWidth={false} disableGutters>
                 <Box
                     sx={{
                         height: 80,

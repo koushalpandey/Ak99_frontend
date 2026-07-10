@@ -2,14 +2,18 @@ import { create } from "zustand";
 
 const useLocationStore = create((set) => ({
   location: null,
+  address: null,
   loading: false,
   error: null,
 
   setLocation: (location) =>
     set({
       location,
-      loading: false,
-      error: null,
+    }),
+
+  setAddress: (address) =>
+    set({
+      address,
     }),
 
   setLoading: (loading) =>
