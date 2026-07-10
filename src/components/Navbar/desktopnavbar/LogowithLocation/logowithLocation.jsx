@@ -63,41 +63,32 @@ function HeaderTop() {
             {/* Location Section */}
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
 
-                <img
-                    src={`https://flagcdn.com/24x18/${locationData?.address?.country_code}.png`}
-                    alt={locationData?.address?.country}
-                    width={24}
-                    height={18}
-                />
+
 
                 <Box>
                     <Box sx={{
                         display: 'flex',
                         alignItems: "center",
-                        gap: 0.5
+                        gap: 0.8
                     }}>
+                        <img
+                            src={`https://flagcdn.com/24x18/${locationData?.address?.country_code}.png`}
+                            alt={locationData?.address?.country}
+                            width={24}
+                            height={18}
+                        />
 
                         <Typography
-                            variant="caption"
+
                             sx={{
                                 color: "black.main",
-                                fontSize: "12.5px",
+                                fontSize: "14px",
                                 display: "block",
                                 lineHeight: 1.2
                             }}
                         >
+
                             {locationData?.address?.country}
-                        </Typography>
-                        <Typography
-                            variant="caption"
-                            sx={{
-                                color: "text.secondary",
-                                fontSize: "12px",
-                                display: "block",
-                                lineHeight: 1.2
-                            }}
-                        >
-                            {locationData?.address?.state}
                         </Typography>
                     </Box>
 
@@ -109,36 +100,52 @@ function HeaderTop() {
                         }}
                     >
                         <Typography
-                            variant="body2"
-                            fontWeight={600}
+
                             sx={{
-                                color: "text.black",
-                                fontSize: "14px"
+                                color: "black.main",
+                                fontSize: "12px",
+                                display: "block",
+                                lineHeight: 1.2
                             }}
                         >
-                            {locationData?.address?.state_district}
+                            {locationData?.address?.state}
                         </Typography>
                         <Typography
                             fontWeight={500}
                             sx={{
                                 color: "black.main",
+                                fontSize: "12px"
+                            }}
+                        >
+                            {locationData?.address?.state_district}
+                        </Typography>
+                    </Box>
+                    <Box sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 0.5
+                    }}>
+
+                        <Typography
+                            fontWeight={600}
+                            sx={{
+                                color: "black.main",
+                                fontSize: "11px"
+                            }}
+                        >
+                            {locationData?.address?.suburb}
+                        </Typography>
+                        <Typography
+                            fontWeight={500}
+                            sx={{
+                                color: "primary.main",
                                 fontSize: "9.5px"
                             }}
                         >
                             {locationData?.address?.postcode}
                         </Typography>
-
-
                     </Box>
-                    <Typography
-                        fontWeight={600}
-                        sx={{
-                            color: "black.main",
-                            fontSize: "11px"
-                        }}
-                    >
-                        {locationData?.address?.suburb}
-                    </Typography>
+
                 </Box>
             </Box>
         </Box>
