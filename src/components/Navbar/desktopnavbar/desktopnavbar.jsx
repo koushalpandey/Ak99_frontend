@@ -59,9 +59,7 @@ function DesktopHeader() {
                             flexShrink: 0,
                             height: "100%",
                             display: "flex",
-                            alignItems: "center",
-                            justifyContent: "flex-end",
-                        }}
+                         }}
                     >
                         <HeaderActions />
                     </Box>
