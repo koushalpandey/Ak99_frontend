@@ -53,7 +53,7 @@ function HeaderActions() {
           sx={{
             fontSize: "13.5px",
             fontWeight: 500,
-            color: "black.main",
+            color: "white.main",
 
           }}
         >
@@ -83,7 +83,7 @@ function HeaderActions() {
           sx={{
             fontSize: "13.5px",
             fontWeight: 500,
-            color: "black.main",
+            color: "white.main",
 
 
           }}
@@ -116,7 +116,7 @@ function HeaderActions() {
           sx={{
             fontSize: "13.5px",
             fontWeight: 500,
-            color: "black.main",
+            color: "white.main",
 
           }}
         >

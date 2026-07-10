@@ -69,19 +69,13 @@ function HeaderTop() {
                     <Box sx={{
                         display: 'flex',
                         alignItems: "center",
-                        gap: 0.8
+                        gap: 1.5
                     }}>
-                        <img
-                            src={`https://flagcdn.com/24x18/${locationData?.address?.country_code}.png`}
-                            alt={locationData?.address?.country}
-                            width={24}
-                            height={18}
-                        />
 
                         <Typography
 
                             sx={{
-                                color: "black.main",
+                                color: "white.main",
                                 fontSize: "14px",
                                 display: "block",
                                 lineHeight: 1.2
@@ -90,6 +84,12 @@ function HeaderTop() {
 
                             {locationData?.address?.country}
                         </Typography>
+                        <img
+                            src={`https://flagcdn.com/24x18/${locationData?.address?.country_code}.png`}
+                            alt={locationData?.address?.country}
+                            width={24}
+                            height={18}
+                        />
                     </Box>
 
                     <Box
@@ -102,8 +102,8 @@ function HeaderTop() {
                         <Typography
 
                             sx={{
-                                color: "black.main",
-                                fontSize: "12px",
+                                color: "white.main",
+                                fontSize: "12.5px",
                                 display: "block",
                                 lineHeight: 1.2
                             }}
@@ -113,11 +113,11 @@ function HeaderTop() {
                         <Typography
                             fontWeight={500}
                             sx={{
-                                color: "black.main",
+                                color: "secondary.main",
                                 fontSize: "12px"
                             }}
                         >
-                            {locationData?.address?.state_district}
+                            ( {locationData?.address?.state_district})
                         </Typography>
                     </Box>
                     <Box sx={{
@@ -129,8 +129,8 @@ function HeaderTop() {
                         <Typography
                             fontWeight={600}
                             sx={{
-                                color: "black.main",
-                                fontSize: "11px"
+                                color: "white.main",
+                                fontSize: "12.5px"
                             }}
                         >
                             {locationData?.address?.suburb}
@@ -138,11 +138,11 @@ function HeaderTop() {
                         <Typography
                             fontWeight={500}
                             sx={{
-                                color: "primary.main",
-                                fontSize: "9.5px"
+                                color: "secondary.main",
+                                fontSize: "12px"
                             }}
                         >
-                            {locationData?.address?.postcode}
+                            ({locationData?.address?.postcode})
                         </Typography>
                     </Box>
 

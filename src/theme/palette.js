@@ -12,6 +12,7 @@ export const COLORS = {
   textSecondary: "#6B7280",
 
   border: "#E5E7EB",
+   white: "#FFFFFF",
 
   // Background Colors
   background: "#FFFFFF",

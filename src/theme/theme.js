@@ -16,6 +16,9 @@ export const theme = createTheme({
         black: {
             main: COLORS.black,
         },
+        white: {
+            main: COLORS.white,
+        },
         topDeal:{
             main:COLORS.topDeal
         },
