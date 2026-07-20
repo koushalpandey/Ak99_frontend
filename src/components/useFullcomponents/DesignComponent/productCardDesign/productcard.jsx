@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import StarIcon from "@mui/icons-material/Star";
+import imagesss from '../../../../assets/kitchen.png'
 
 const ProductCard = ({
   image,
@@ -104,7 +105,7 @@ const ProductCard = ({
       >
         <CardMedia
           component="img"
-          image={image}
+          image={imagesss}
           alt={title}
           sx={{
             objectFit: "cover",

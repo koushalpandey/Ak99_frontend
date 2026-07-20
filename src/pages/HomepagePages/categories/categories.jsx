@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Box, Typography, Link, CircularProgress } from '@mui/material';
 import useCatStore from '../../../store/homepageStores/categoriesStore';
 
+
 export default function CategoryNav() {
 
     const categoriesState = useCatStore((state) => state?.slider);
@@ -83,7 +84,7 @@ export default function CategoryNav() {
                                 width: 90,
                                 height: 90,
                                 borderRadius: '50%',
-                                backgroundColor: '#f5f5f5',
+                                border:'1px solid #000',
                                 display: 'flex',
                                 justifyContent: 'center',
                                 alignItems: 'center',
