@@ -56,7 +56,7 @@ function HeaderActions() {
 
           }}
         >
-          {userData?.name}
+          {userData?.name||"Guest"}
         </Typography>
       </Box>
       {/* Wishlist Item */}
