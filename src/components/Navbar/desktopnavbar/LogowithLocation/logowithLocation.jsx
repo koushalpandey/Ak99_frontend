@@ -8,21 +8,25 @@ import axios from "axios";
 function HeaderTop() {
   const navigate = useNavigate();
 
-const location = useLocationStore((state) => state?.location);
-const address = useLocationStore((state) => state?.address);
-const setAddress = useLocationStore((state) => state?.setAddress);
+  const location = useLocationStore((state) => state?.location);
+  const address = useLocationStore((state) => state?.address);
+  const setAddress = useLocationStore((state) => state?.setAddress);
 
 
 
   useEffect(() => {
     if (!location?.latitude || !location?.longitude) return;
-
-
     const cached = localStorage.getItem("userAddress");
 
-    if (cached) {
-      setAddress(JSON.parse(cached));
-      return;
+    try {
+      const parsedAddress = cached ? JSON.parse(cached) : null;
+
+      if (parsedAddress) {
+        setAddress(parsedAddress);
+        return;
+      }
+    } catch {
+      localStorage.removeItem("userAddress");
     }
 
     const fetchLocation = async () => {
