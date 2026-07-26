@@ -7,22 +7,27 @@ import {
   IconButton,
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import StarIcon from "@mui/icons-material/Star";
-import imagesss from '../../../../assets/kitchen.png'
+import { NavLink } from "react-router-dom";
+// import StarIcon from "@mui/icons-material/Star";
+
 
 const ProductCard = ({
   image,
-  title,
+  name,
   currentPrice,
   originalPrice,
-  discount,
-  isNew,
-  rating,
+  slug
+  // rating,
 }) => {
+
+
   return (
     <Card
+    component={NavLink}
+    to={`/productDetail/${slug}`}
       elevation={0}
       sx={{
+        textDecoration:"none",
         borderRadius: "16px",
         width: "210px",
         flexShrink: 0,
@@ -37,45 +42,8 @@ const ProductCard = ({
         },
       }}
     >
-      {discount && (
-        <Box
-          sx={{
-            position: "absolute",
-            top: 12,
-            left: 12,
-            backgroundColor: "#FF6B4A",
-            color: "#FFF",
-            fontSize: "0.65rem",
-            fontWeight: 700,
-            px: 1,
-            py: 0.4,
-            borderRadius: "10px",
-            zIndex: 2,
-          }}
-        >
-          {discount}
-        </Box>
-      )}
 
-      {isNew && (
-        <Box
-          sx={{
-            position: "absolute",
-            top: 12,
-            left: 12,
-            backgroundColor: "#7AA27D",
-            color: "#FFF",
-            fontSize: "0.65rem",
-            fontWeight: 700,
-            px: 1,
-            py: 0.4,
-            borderRadius: "10px",
-            zIndex: 2,
-          }}
-        >
-          NEW
-        </Box>
-      )}
+
 
       <IconButton
         size="small"
@@ -100,13 +68,13 @@ const ProductCard = ({
           justifyContent: "center",
           alignItems: "center",
           height: 190,
-          width:200
+          width: 200
         }}
       >
         <CardMedia
           component="img"
-          image={imagesss}
-          alt={title}
+          image={image[0]?.original}
+          alt={name}
           sx={{
             objectFit: "cover",
             maxHeight: "100%",
@@ -131,7 +99,7 @@ const ProductCard = ({
             height: "2.6em",
           }}
         >
-          {title}
+          {name}
         </Typography>
 
         <Box
@@ -150,7 +118,7 @@ const ProductCard = ({
                 fontSize: "0.95rem",
               }}
             >
-              ${currentPrice}
+              ₹{currentPrice}
             </Typography>
 
             {originalPrice && (
@@ -162,19 +130,19 @@ const ProductCard = ({
                   fontSize: "0.75rem",
                 }}
               >
-                ${originalPrice}
+                ₹{originalPrice}
               </Typography>
             )}
           </Box>
 
-          {rating && (
+          {/* {rating && (
             <Box sx={{ display: "flex", alignItems: "center", gap: 0.3 }}>
               <StarIcon sx={{ color: "#FFB400", fontSize: "0.9rem" }} />
               <Typography sx={{ fontSize: "0.75rem", fontWeight: 600, color: "#666" }}>
                 {rating}
               </Typography>
             </Box>
-          )}
+          )} */}
         </Box>
       </CardContent>
     </Card>

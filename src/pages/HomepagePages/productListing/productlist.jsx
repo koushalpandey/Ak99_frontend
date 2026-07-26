@@ -10,7 +10,9 @@ import ProductCard from '../../../components/useFullcomponents/DesignComponent/p
 
 
 
-export default function ProductList({ productData }) {
+export default function ProductList({ data, title}) {
+    // console.log(data);
+
     const scrollContainerRef = useRef(null);
     const handleScroll = (direction) => {
         if (scrollContainerRef.current) {
@@ -51,7 +53,7 @@ export default function ProductList({ productData }) {
                             fontSize: '1.4rem'
                         }}
                     >
-                        {productData[0]?.category}
+                        {title}
                     </Typography>
 
 
@@ -117,14 +119,15 @@ export default function ProductList({ productData }) {
                     scrollBehavior: 'smooth'
                 }}
             >
-                {productData.map((item) => (
+                {data?.map((item) => (
                     <ProductCard
-                        key={item.id}
-                        image={item.image}
-                        title={item.title}
-                        currentPrice={item.currentPrice}
-                        originalPrice={item.originalPrice}
-                        discount={item.discount}
+                        key={item?.id}
+                        image={item?.images}
+                        name={item?.name}
+                        slug={item?.slug}
+                        currentPrice={item?.price}
+                        originalPrice={item?.comparePrice}
+
                     />
                 ))}
             </Box>

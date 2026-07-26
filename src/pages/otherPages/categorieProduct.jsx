@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Box,
   Container,
@@ -27,6 +27,8 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 // Custom styled components for accurate visual replication
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import useCategorieProductList from '../../store/categoiresProductStore/store';
+import { useParams } from 'react-router-dom';
 
 const HeaderSection = styled(Box)({
   marginBottom: '24px',
@@ -159,8 +161,18 @@ const products = [
 ];
 
 export default function CategoriesProductPage() {
+  const CategoriesProduct = useCategorieProductList((state) => state?.Data)
+  const fetchCategoriesProductList = useCategorieProductList((state) => state?.fetchCategoriesProductList)
+  const { slug } = useParams();
   const [alignment, setAlignment] = React.useState('featured');
   const [sortBy, setSortBy] = React.useState('Featured');
+
+
+
+
+  useEffect(()=>{
+    fetchCategoriesProductList(slug)
+  },[fetchCategoriesProductList,slug])
 
   return (
     <Container maxWidth="xl" sx={{ py: 4, fontFamily: 'Be Vietnam Pro' }}>
@@ -168,7 +180,7 @@ export default function CategoriesProductPage() {
       {/* Top Header Section */}
       <HeaderSection>
         <Typography variant="h3" sx={{ fontWeight: 800, color: '#0a192f', mb: 1, fontSize: '2.25rem' }}>
-          Electronics
+          {CategoriesProduct?.name}
         </Typography>
 
 
@@ -229,8 +241,8 @@ export default function CategoriesProductPage() {
 
       {/* Grid Layout Layout for Cards */}
       <Grid container spacing={3}>
-        {products.map((product) => (
-          <Grid size={{ xs: 12, sm: 6, md: 3 }} key={product.id}>
+        {CategoriesProduct?.products?.map((product) => (
+          <Grid size={{ xs: 12, sm: 6, md: 3 }} key={product?.id}>
             <ProductCard>
               <DiscountChip label={product.discount} size="small" />
               <WishlistButton size="small">
@@ -241,8 +253,8 @@ export default function CategoriesProductPage() {
               <Box sx={{ p: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
                 <CardMedia
                   component="img"
-                  image={product.image}
-                  alt={product.title}
+                  image={product?.images[0]?.original}
+                  alt={product?.name}
                   sx={{ objectFit: 'contain', maxHeight: '100%', maxWidth: '100%' }}
                 />
               </Box>
@@ -258,17 +270,31 @@ export default function CategoriesProductPage() {
                     icon={<StarIcon sx={{ color: '#ffc107', fontSize: 16 }} />}
                     emptyIcon={<StarIcon sx={{ color: '#e4e5e9', fontSize: 16 }} />}
                   />
-                  <Typography variant="caption" sx={{ color: '#495057', fontWeight: 600, ml: 0.5 }}>
+                  {/* <Typography variant="caption" sx={{ color: '#495057', fontWeight: 600, ml: 0.5 }}>
                     {product.rating}
-                  </Typography>
-                  <Typography variant="caption" sx={{ color: '#adb5bd' }}>
-                    ({product.reviews})
-                  </Typography>
+                  </Typography> */}
+
                 </Box>
 
                 {/* Title */}
                 <Typography
                   variant="body1"
+                  sx={{
+                    fontWeight: 600,
+                    color: '#0a192f',
+                    fontSize: '0.95rem',
+                    lineHeight: 1.4,
+                    mb:1,
+                    overflow: 'hidden',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical'
+                  }}
+                >
+                  {product?.name}
+                </Typography>
+                <Typography
+
                   sx={{
                     fontWeight: 600,
                     color: '#0a192f',
@@ -282,16 +308,16 @@ export default function CategoriesProductPage() {
                     WebkitBoxOrient: 'vertical'
                   }}
                 >
-                  {product.title}
+                  {product?.description}
                 </Typography>
 
                 {/* Price block */}
                 <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1 }}>
                   <Typography variant="h6" sx={{ fontWeight: 700, color: '#0a192f', fontSize: '1.15rem' }}>
-                    ${product.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    ₹{product?.price?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </Typography>
                   <Typography variant="body2" sx={{ textDecoration: 'line-through', color: '#adb5bd', fontSize: '0.85rem' }}>
-                    ${product.originalPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    ₹{product?.comparePrice?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </Typography>
                 </Box>
               </CardContent>

@@ -9,10 +9,14 @@ import { fetchProductListings } from "../../components/dummyData/productDummyDat
 import { fetchCategories } from "../../components/dummyData/categoriDummyData";
 import PromoBanners from "./promobanner";
 import MarketingBannerZone from "../../components/Trust/ourtrust";
+import useCategorieProduct from "../../store/homepageStores/categoireProductStore";
+
 
 
 
 function Homepage() {
+    const CategoriesProduct = useCategorieProduct((state) => state?.Electronic)
+    const fetchDashBoardProduct = useCategorieProduct((state) => state?.fetchDashBoardProduct)
 
     const [productData, setProductData] = useState([])
     const [CategoryData, setCategoryData] = useState([])
@@ -41,7 +45,8 @@ function Homepage() {
     useEffect(() => {
         getProduct()
         getCategories()
-    }, []);
+        fetchDashBoardProduct()
+    }, [fetchDashBoardProduct]);
 
 
 
@@ -58,7 +63,9 @@ function Homepage() {
             <TopDealsOfTheDay />
             <PromoBanners />
             <ProductList
+                title={"Electronic"}
                 productData={productData}
+                data={CategoriesProduct}
                 backgroundColor={"backgroundPurpleSoft.main"}
             />
 

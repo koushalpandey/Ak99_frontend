@@ -3,14 +3,14 @@ import { apiRequest } from "../client/api.client.js";
 // Login Funtion
 export const googleLoginApi = async (payload) => {
   return await apiRequest({
-    url: "user/auth/login-google",
+    url: "/auth/login-google",
     method: "post",
     payload: payload,
   });
 };
 export const getUserData = async () => {
   return await apiRequest({
-    url: "user/auth/me",
+    url: "/auth/me",
     method: "get",
     payload: false,
     requiresAuth: true,
@@ -19,7 +19,7 @@ export const getUserData = async () => {
 
 export const getSlider = async () => {
   return await apiRequest({
-    url: `user/products/slider`,
+    url: `/products/slider`,
     method: "get",
     payload: false,
   });
@@ -27,7 +27,7 @@ export const getSlider = async () => {
 
 export const categorieseUser = async () => {
   return await apiRequest({
-    url: "user/products/categories",
+    url: "/products/categories",
     method: "get",
     payload: false,
   });
@@ -36,7 +36,7 @@ export const categorieseUser = async () => {
 // product details  api
 export const getProductDetail = async (slug) => {
   return await apiRequest({
-    url: `user/products/slug/${slug}`,
+    url: `/products/slug/${slug}`,
     method: "get",
     payload: false,
   });
@@ -45,21 +45,21 @@ export const getProductDetail = async (slug) => {
 // product list api
 export const getProductList = async () => {
   return await apiRequest({
-    url: `user/products/list`,
+    url: `/products/list`,
     method: "get",
     payload: false,
   });
 };
 export const AddWishList = async (data) => {
   return await apiRequest({
-    url: `user/wishlist/add`,
+    url: `/wishlist/add`,
     method: "post",
     payload: data,
   });
 };
 export const getWishList = async (data) => {
   return await apiRequest({
-    url: `user/wishlist/get`,
+    url: `/wishlist/get`,
     method: "get",
     payload: data,
     requiresAuth: true,
@@ -67,9 +67,24 @@ export const getWishList = async (data) => {
 };
 export const submitReviewApi = async (data) => {
   return await apiRequest({
-    url: `user/review/create`,
+    url: `/review/create`,
     method: "post",
     payload: data,
     requiresAuth: true,
   });
 };
+
+
+
+export const DashbaordApi = async()=>{
+  return await apiRequest({
+    url: "/products/dashboard",
+    method:"get",
+  })
+}
+export const CategorieProduct = async(slug)=>{
+  return await apiRequest({
+    url: `/products/categories/${slug}`,
+    method:"get",
+  })
+}

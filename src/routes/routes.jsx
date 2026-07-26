@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
                 element: <WishlistComponent />,
             },
             {
-                path:"/categorie",
+                path:"/categorie/:slug",
                 element: <CategoriesProductPage />,
             },
 
