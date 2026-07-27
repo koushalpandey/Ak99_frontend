@@ -1,4 +1,5 @@
 import api from "../../config/env.js"
+import useAuthStore from "../../store/userStore/store.js";
 
 
 api.interceptors.request.use(
@@ -58,3 +59,16 @@ export const apiRequest = async ({
     throw error?.response?.data || error.message;
   }
 };
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      useAuthStore.getState().logout();
+
+      window.location.href = "/login";
+    }
+
+    return Promise.reject(error);
+  }
+);

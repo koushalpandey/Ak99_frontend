@@ -8,7 +8,11 @@ import CheckoutPage from "../pages/otherPages/checkout";
 import WishlistComponent from "../pages/otherPages/wishlistPage";
 import CategoriesProductPage from "../pages/otherPages/categorieProduct";
 
+import ProtectedRoute from "./protected.routes";
+import PublicRoute from "./public.routes";
+
 export const router = createBrowserRouter([
+  // Public Routes
   {
     path: "/",
     element: <MainLayout />,
@@ -22,22 +26,38 @@ export const router = createBrowserRouter([
         element: <ProductDetailsPage />,
       },
       {
-        path: "checkout",
-        element: <CheckoutPage />,
-      },
-      {
-        path: "wishlist",
-        element: <WishlistComponent />,
-      },
-      {
         path: "categorie/:slug",
         element: <CategoriesProductPage />,
       },
     ],
   },
 
+  // Protected Routes
+  {
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: "/checkout",
+        element: <CheckoutPage />,
+      },
+      {
+        path: "/wishlist",
+        element: <WishlistComponent />,
+      },
+    ],
+  },
+
+  // Auth Routes
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <PublicRoute>
+        <Login />
+      </PublicRoute>
+    ),
   },
 ]);
