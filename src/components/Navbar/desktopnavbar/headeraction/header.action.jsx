@@ -3,21 +3,30 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import { NavLink } from "react-router-dom";
-import useAuthStore from "../../../../store/userStore/store.js";
-import { useEffect } from "react";
-import wishlistimg from '../../../../assets/shopping-basket.png'
-import addTocardimg from '../../../../assets/shopping-cart.png'
+import { useNavigate } from "react-router-dom";
 
+import wishlistimg from "../../../../assets/shopping-basket.png";
+import addTocardimg from "../../../../assets/shopping-cart.png";
 
+import { useAuth } from "../../../../hooks/useAuth.js";
 
 function HeaderActions() {
-  const userData = useAuthStore((state) => state?.Data);
-  const fetchUserData = useAuthStore((state) => state?.fetchUserData);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchUserData()
-  }, [fetchUserData])
+  const { user, isAuthenticated, loading } = useAuth();
+
+  const userData = user?.user;
+
+  const handleProtectedNavigation = (path) => {
+    if (!isAuthenticated) {
+      navigate("/login");
+      return;
+    }
+
+    navigate(path);
+  };
+
+  if (loading) return null;
 
   return (
     <Box
@@ -29,14 +38,18 @@ function HeaderActions() {
         py: 1,
       }}
     >
-
+      {/* User */}
       <Box
+        onClick={() =>
+          isAuthenticated
+            ? navigate("/profile")
+            : navigate("/login")
+        }
         sx={{
           display: "flex",
           alignItems: "center",
           gap: "10px",
           cursor: "pointer",
-          textDecoration: "none",
         }}
       >
         <Avatar
@@ -45,35 +58,34 @@ function HeaderActions() {
           sx={{
             width: 30,
             height: 30,
-            border: "2px solid #0D6EFD"
+            border: "2px solid #0D6EFD",
           }}
         />
+
         <Typography
           sx={{
             fontSize: "12px",
             fontWeight: 500,
             color: "white.main",
-
           }}
         >
-          {userData?.name||"Guest"}
+          {isAuthenticated ? userData?.name : "Login"}
         </Typography>
       </Box>
-      {/* Wishlist Item */}
+
+      {/* Wishlist */}
       <Box
-        component={NavLink}
-        to={'wishlist'}
+        onClick={() => handleProtectedNavigation("/wishlist")}
         sx={{
           display: "flex",
           alignItems: "center",
           gap: "5px",
           cursor: "pointer",
-          textDecoration: "none",
         }}
       >
         <Avatar
           src={wishlistimg}
-          alt="wishlist"
+          alt="Wishlist"
           sx={{
             width: 24,
             height: 24,
@@ -81,43 +93,37 @@ function HeaderActions() {
               filter:
                 "brightness(0) saturate(100%) invert(32%) sepia(95%) saturate(1955%) hue-rotate(204deg) brightness(97%) contrast(94%)",
             },
-
           }}
         />
+
         <Typography
           sx={{
             fontSize: "12px",
             fontWeight: 500,
             color: "white.main",
-            mt: 0.8
+            mt: 0.8,
           }}
         >
           Wishlist
         </Typography>
       </Box>
 
-
-
-      {/* Cart Item */}
+      {/* Cart */}
       <Box
-        component={NavLink}
-        to={'checkout'}
+        onClick={() => handleProtectedNavigation("/checkout")}
         sx={{
           display: "flex",
           alignItems: "center",
           gap: "8px",
           cursor: "pointer",
-          textDecoration: "none",
         }}
       >
         <Avatar
           src={addTocardimg}
-          alt="wishlist"
+          alt="Cart"
           sx={{
             width: 32,
             height: 32,
-
-
           }}
         />
 
@@ -126,8 +132,7 @@ function HeaderActions() {
             fontSize: "12px",
             fontWeight: 500,
             color: "white.main",
-            mt:0.8
-
+            mt: 0.8,
           }}
         >
           Cart
