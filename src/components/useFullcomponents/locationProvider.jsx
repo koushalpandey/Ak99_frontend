@@ -2,11 +2,8 @@ import { useEffect } from "react";
 import useLocationStore from "../../store/userLoactionStore/store";
 import { useGeolocated } from "react-geolocated";
 
-
-
 const LocationProvider = () => {
   const { setLocation, setLoading, setError } = useLocationStore();
-
   const {
     coords,
     positionError,
@@ -20,6 +17,7 @@ const LocationProvider = () => {
     },
     suppressLocationOnMount: false,
     watchPosition: false,
+    userDecisionTimeout: 10000,
   });
 
   useEffect(() => {

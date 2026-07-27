@@ -11,33 +11,39 @@ function HeaderTop() {
   const location = useLocationStore((state) => state?.location);
   const address = useLocationStore((state) => state?.address);
   const setAddress = useLocationStore((state) => state?.setAddress);
-
-
-
   useEffect(() => {
     if (!location?.latitude || !location?.longitude) return;
-    const cached = localStorage.getItem("userAddress");
 
-    try {
-      const parsedAddress = cached ? JSON.parse(cached) : null;
+    const CACHE_TTL = 24 * 60 * 60 * 1000; // 24h
 
-      if (parsedAddress) {
-        setAddress(parsedAddress);
-        return;
+    // Try cache first
+    const cachedRaw = localStorage.getItem("userAddress");
+    if (cachedRaw) {
+      try {
+        const parsedCache = JSON.parse(cachedRaw);
+        const isStale =
+          !parsedCache?.cachedAt ||
+          Date.now() - parsedCache.cachedAt > CACHE_TTL;
+
+        if (parsedCache?.data && !isStale) {
+          setAddress(parsedCache.data);
+          return;
+        }
+      } catch (error) {
+        console.error("Corrupted cache:", error);
       }
-    } catch {
       localStorage.removeItem("userAddress");
     }
 
     const fetchLocation = async () => {
       try {
-        const { data } = await axios.get(
+        const response = await axios.get(
           "https://nominatim.openstreetmap.org/reverse",
           {
             params: {
               lat: location.latitude,
               lon: location.longitude,
-
+              format: "jsonv2",
             },
             headers: {
               Accept: "application/json",
@@ -45,14 +51,26 @@ function HeaderTop() {
           }
         );
 
-        setAddress(data.address);
+        const fetchedAddress = response?.data?.address;
 
+        if (!fetchedAddress) {
+          console.error("No address in response:", response?.data);
+          return;
+        }
+
+        setAddress(fetchedAddress);
         localStorage.setItem(
           "userAddress",
-          JSON.stringify(data.address)
+          JSON.stringify({
+            data: fetchedAddress,
+            cachedAt: Date.now(),
+          })
         );
       } catch (error) {
-        console.log(error);
+        console.error("Location fetch failed:", error?.message);
+        if (error?.response) {
+          console.error("Status:", error.response.status, "Data:", error.response.data);
+        }
       }
     };
 
