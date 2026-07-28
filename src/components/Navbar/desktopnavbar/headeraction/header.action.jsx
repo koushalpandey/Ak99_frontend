@@ -42,7 +42,7 @@ function HeaderActions() {
       <Box
         onClick={() =>
           isAuthenticated
-            ? navigate("/profile")
+            ? navigate("/")
             : navigate("/login")
         }
         sx={{
