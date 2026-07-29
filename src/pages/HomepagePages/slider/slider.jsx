@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Box, Card, CardMedia, CircularProgress, IconButton, Typography } from '@mui/material';
+import { Box, Card, CardMedia, IconButton, } from '@mui/material';
 import useSliderStore from '../../../store/homepageStores/sliderStore';
 import bannerimg from "../../../assets/Gemini_Generated_Image_zeveo9zeveo9zeve.png"
 import bannerimg1 from "../../../assets/Gemini_Generated_Image_5dc8js5dc8js5dc8.png"
@@ -15,8 +15,6 @@ function SliderComponent() {
   const [activeStep, setActiveStep] = useState(0);
   const maxSteps = bannerImages.length;
   const sliderData = useSliderStore((state) => state?.slider);
-  const loading = useSliderStore((state) => state?.loading);
-  const error = useSliderStore((state) => state?.error);
   const fetchSlider = useSliderStore((state) => state?.fetchSlider);
 
   useEffect(() => {
