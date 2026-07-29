@@ -4,8 +4,6 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-import wishlistimg from "../../../../assets/shopping-basket.png";
 import addTocardimg from "../../../../assets/shopping-cart.png";
 
 import { useAuth } from "../../../../hooks/useAuth.js";
@@ -73,9 +71,7 @@ function HeaderActions() {
         </Typography>
       </Box>
 
-
-
-      {/* Cart */}
+    {/* Cart */}
       <Box
         onClick={() => handleProtectedNavigation("/checkout")}
         sx={{
@@ -102,7 +98,7 @@ function HeaderActions() {
             mt: 0.8,
           }}
         >
-          Cart
+          Add to Cart
         </Typography>
       </Box>
     </Box>
