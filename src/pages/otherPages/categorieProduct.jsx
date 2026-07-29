@@ -28,7 +28,7 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import useCategorieProductList from '../../store/categoiresProductStore/store';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const HeaderSection = styled(Box)({
   marginBottom: '24px',
@@ -116,61 +116,17 @@ const AddToCartButton = styled(Button)({
   },
 });
 
-// Mock Data matching the exact specifications in the image
-const products = [
-  {
-    id: 1,
-    title: 'Apple iPhone 15 Pro Max 256GB',
-    discount: '-20%',
-    image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&auto=format&fit=crop&q=60', // Placeholder match
-    rating: 4.7,
-    reviews: 128,
-    price: 1099.00,
-    originalPrice: 1299.00
-  },
-  {
-    id: 2,
-    title: 'Apple MacBook Air M2 13-inch 256GB',
-    discount: '-15%',
-    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&auto=format&fit=crop&q=60',
-    rating: 4.6,
-    reviews: 96,
-    price: 999.00,
-    originalPrice: 1179.00
-  },
-  {
-    id: 3,
-    title: 'Bose QuietComfort 45 Wireless Headphones',
-    discount: '-25%',
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&auto=format&fit=crop&q=60',
-    rating: 4.8,
-    reviews: 75,
-    price: 249.00,
-    originalPrice: 329.00
-  },
-  {
-    id: 4,
-    title: 'Samsung Galaxy Watch 6 Classic 47mm',
-    discount: '-10%',
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&auto=format&fit=crop&q=60',
-    rating: 4.5,
-    reviews: 64,
-    price: 269.00,
-    originalPrice: 299.00
-  }
-];
+
 
 export default function CategoriesProductPage() {
   const CategoriesProduct = useCategorieProductList((state) => state?.Data)
   const fetchCategoriesProductList = useCategorieProductList((state) => state?.fetchCategoriesProductList)
+  const navigate= useNavigate()
   const { slug } = useParams();
   const [alignment, setAlignment] = React.useState('featured');
   const [sortBy, setSortBy] = React.useState('Featured');
 
-
-
-
-  useEffect(()=>{
+ useEffect(()=>{
     fetchCategoriesProductList(slug)
   },[fetchCategoriesProductList,slug])
 
@@ -242,7 +198,11 @@ export default function CategoriesProductPage() {
       {/* Grid Layout Layout for Cards */}
       <Grid container spacing={3}>
         {CategoriesProduct?.products?.map((product) => (
-          <Grid size={{ xs: 12, sm: 6, md: 3 }} key={product?.id}>
+          <Grid
+          onClick={() => navigate(`/productDetail/${product?.slug}`)}
+          size={{ xs: 12, sm: 6, md: 3 }}
+          key={product?.id}
+          >
             <ProductCard>
               <DiscountChip label={product.discount} size="small" />
               <WishlistButton size="small">
@@ -270,9 +230,7 @@ export default function CategoriesProductPage() {
                     icon={<StarIcon sx={{ color: '#ffc107', fontSize: 16 }} />}
                     emptyIcon={<StarIcon sx={{ color: '#e4e5e9', fontSize: 16 }} />}
                   />
-                  {/* <Typography variant="caption" sx={{ color: '#495057', fontWeight: 600, ml: 0.5 }}>
-                    {product.rating}
-                  </Typography> */}
+
 
                 </Box>
 
