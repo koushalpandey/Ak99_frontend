@@ -7,13 +7,10 @@ import Specification from "./productDetails/specification";
 import ReviewSection from "../../components/useFullcomponents/DesignComponent/reviewDesign/userReview";
 import ProductBreadcrumb from "../../components/useFullcomponents/breadcrumb/productBreadcrumb";
 import AddReviewComponent from "./reviewDetailes/add.review";
-
-import useAuthStore from "../../store/userStore/store";
 import { useProductDetailQuery } from "../../quries/products/useProductDetailQuery.js";
 
 const ProductDetailsPage = () => {
   const { slug } = useParams();
-  const userData = useAuthStore((state) => state.Data);
   const { data } = useProductDetailQuery(slug);
 
   const ProductDetail = data?.data;
@@ -34,7 +31,7 @@ const ProductDetailsPage = () => {
           />
 
           <ProductImages
-            userId={userData?.id}
+
             productId={ProductDetail?.id}
             Productimages={ProductDetail?.images}
           />
