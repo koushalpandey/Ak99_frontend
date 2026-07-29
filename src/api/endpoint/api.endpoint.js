@@ -50,21 +50,7 @@ export const getProductList = async () => {
     payload: false,
   });
 };
-export const AddWishList = async (data) => {
-  return await apiRequest({
-    url: `/wishlist/add`,
-    method: "post",
-    payload: data,
-  });
-};
-export const getWishList = async (data) => {
-  return await apiRequest({
-    url: `/wishlist/get`,
-    method: "get",
-    payload: data,
-    requiresAuth: true,
-  });
-};
+
 export const submitReviewApi = async (data) => {
   return await apiRequest({
     url: `/review/create`,

@@ -2,11 +2,11 @@
 import { useState } from "react";
 import { Card, CardMedia, Grid, Box } from "@mui/material";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
-import WishlistButton from "../../../components/useFullcomponents/wishListButton/wishlist";
 
 
 
-const ProductImages = ({ Productimages , productId ,userId}) => {
+
+const ProductImages = ({ Productimages }) => {
  const [selectedImage, setSelectedImage] = useState(0);
  const images = Array.isArray(Productimages) ? Productimages : [];
 
@@ -24,11 +24,7 @@ const ProductImages = ({ Productimages , productId ,userId}) => {
     >
       {/* Wishlist Button */}
       <Box sx={{ position: "relative", mb: 2 }}>
-        <WishlistButton
-          userId={userId}
-          productId={productId}
 
-        />
 
         {/* Main Image */}
         <Box
