@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { Box, Typography, Link, CircularProgress } from '@mui/material';
 import useCatStore from '../../../store/homepageStores/categoriesStore';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function CategoryNav() {
-
+    const navigate = useNavigate()
     const categoriesState = useCatStore((state) => state?.slider);
     const loading = useCatStore((state) => state?.loading);
     const error = useCatStore((state) => state?.error);
@@ -80,6 +81,7 @@ export default function CategoryNav() {
                     >
 
                         <Box
+                        onClick={()=>navigate(`/categorie/${category?.slug}`)}
                             sx={{
                                 width: 90,
                                 height: 90,
