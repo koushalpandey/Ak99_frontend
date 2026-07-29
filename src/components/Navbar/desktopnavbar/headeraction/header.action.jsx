@@ -73,40 +73,7 @@ function HeaderActions() {
         </Typography>
       </Box>
 
-      {/* Wishlist */}
-      <Box
-        onClick={() => handleProtectedNavigation("/wishlist")}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: "5px",
-          cursor: "pointer",
-        }}
-      >
-        <Avatar
-          src={wishlistimg}
-          alt="Wishlist"
-          sx={{
-            width: 24,
-            height: 24,
-            "& img": {
-              filter:
-                "brightness(0) saturate(100%) invert(32%) sepia(95%) saturate(1955%) hue-rotate(204deg) brightness(97%) contrast(94%)",
-            },
-          }}
-        />
 
-        <Typography
-          sx={{
-            fontSize: "12px",
-            fontWeight: 500,
-            color: "white.main",
-            mt: 0.8,
-          }}
-        >
-          Wishlist
-        </Typography>
-      </Box>
 
       {/* Cart */}
       <Box
