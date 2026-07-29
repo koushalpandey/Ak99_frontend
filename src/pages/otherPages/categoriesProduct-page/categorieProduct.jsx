@@ -27,7 +27,7 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 // Custom styled components for accurate visual replication
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import useCategorieProductList from '../../store/categoiresProductStore/store';
+import useCategorieProductList from '../../../store/categoiresProductStore/store';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const HeaderSection = styled(Box)({

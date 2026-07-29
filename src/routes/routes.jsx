@@ -5,7 +5,7 @@ import Homepage from "../pages/HomepagePages/homepage";
 import ProductDetailsPage from "../pages/PoductDetailPages/productDetailsPage";
 import Login from "../auth/authpages/loginPage";
 import CheckoutPage from "../pages/otherPages/checkout";
-import CategoriesProductPage from "../pages/otherPages/categorieProduct";
+import CategoriesProductPage from "../pages/otherPages/categoriesProduct-page/categorieProduct";
 
 import ProtectedRoute from "./protected.routes";
 import PublicRoute from "./public.routes";
