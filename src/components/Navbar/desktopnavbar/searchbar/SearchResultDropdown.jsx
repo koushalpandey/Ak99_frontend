@@ -50,7 +50,7 @@ function SearchResultDropdown({
                     {products.map((product, index) => {
                         const image =
                             product.images?.[0]?.original ||
-                            product.images?.[0]?.url || "No Product Found";
+                            product.images?.[0]?.url || "N/A";
 
                         return (
                             <Box key={product.id}>
