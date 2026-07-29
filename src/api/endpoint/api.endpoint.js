@@ -74,3 +74,13 @@ export const CategorieProduct = async(slug)=>{
     method:"get",
   })
 }
+
+
+export const searchProduct = async (query) => {
+  return await apiRequest({
+    url: `/products/search?q=${encodeURIComponent(query)}`,
+    method: "get",
+  });
+};
+
+

@@ -1,104 +1,116 @@
+import { useEffect, useState } from "react";
 import {
-    Box,
-    Button,
-    InputBase,
-    Typography,
+  Box,
+  Button,
+  InputBase,
+  Typography,
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
+import { searchProduct } from "../../../../api/endpoint/api.endpoint.js";
+import SearchResultDropdown from "./SearchResultDropdown";
+
 function HeaderSearch() {
-    return (
+  const [search, setSearch] = useState("");
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!search.trim()) {
+      setProducts([]);
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      try {
+        setLoading(true);
+        const res = await searchProduct(search);
+        setProducts(res?.data?.products || []);
+      } catch (err) {
+        console.log(err);
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  return (
+    <Box
+      sx={{
+        position: "relative",
+        width: "100%",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          border: "1px solid #e0e0e0",
+          borderRadius: "10px",
+          overflow: "hidden",
+          height: 45,
+          bgcolor: "#fff",
+        }}
+      >
         <Box
-            sx={{
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                border: "1px solid",
-                borderColor: "#e0e0e0",
-                borderRadius: "10px",
-                overflow: "hidden",
-                height: 45,
-                bgcolor: "#ffffff",
-                boxShadow: "none",
-            }}
+          sx={{
+            minWidth: 160,
+            pl: 3,
+            pr: 2,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            borderRight: "1px solid #e0e0e0",
+            cursor: "pointer",
+            height: "100%",
+          }}
         >
-            {/* Categories Dropdown Section */}
-            <Box
-                sx={{
-                    minWidth: 160,
-                    pl: 3,
-                    pr: 2,
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    borderRight: "1px solid",
-                    borderColor: "#e0e0e0",
-                    cursor: "pointer",
-                    flexShrink: 0,
-                    "&:hover": {
-                        bgcolor: "rgba(0, 0, 0, 0.02)",
-                    },
-                }}
-            >
-                <Typography
-                    sx={{
-                        fontSize: "14px",
-                        color: "text.black",
-                        fontWeight: 400,
-                        userSelect: "none",
-                    }}
-                >
-                    All Categories
-                </Typography>
-                <KeyboardArrowDownIcon
-                    sx={{
-                        color: "#4a4a4a",
-                        fontSize: "20px",
-                        ml: 0.5
-                    }}
-                />
-            </Box>
+          <Typography
+            sx={{
+              fontSize: 14,
+            }}
+          >
+            All Categories
+          </Typography>
 
-            {/* Input Field Section */}
-            <InputBase
-                placeholder="Search for products, brands and more..."
-                sx={{
-                    flex: 1,
-                    px: 3,
-                    height: "100%",
-                    fontSize: "16px",
-                    color: "#212121",
-                    "& input::placeholder": {
-                        color: "#878787",
-                        opacity: 1,
-                    },
-                }}
-            />
-
-            {/* Search Button Section */}
-            <Button
-                variant="contained"
-                disableElevation
-                sx={{
-                    height: "calc(100% - 8px)",
-                    marginRight: "4px",
-                    borderRadius: "6px",
-                    px: 4,
-                    flexShrink: 0,
-                    bgcolor: "#1877f2",
-                    textTransform: "none",
-                    fontWeight: 700,
-                    fontSize: "16px",
-                    "&:hover": {
-                        bgcolor: "#166fe5",
-                    },
-                }}
-            >
-                Search
-            </Button>
+          <KeyboardArrowDownIcon />
         </Box>
-    );
+
+        <InputBase
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search for products..."
+          sx={{
+            flex: 1,
+            px: 3,
+          }}
+        />
+
+        <Button
+          variant="contained"
+          disableElevation
+          sx={{
+            mr: .5,
+            borderRadius: 2,
+            textTransform: "none",
+            px: 4,
+          }}
+        >
+          Search
+        </Button>
+      </Box>
+
+      <SearchResultDropdown
+        loading={loading}
+        products={products}
+        search={search}
+        onClose={() => setSearch("")}
+      />
+    </Box>
+  );
 }
 
 export default HeaderSearch;
