@@ -33,6 +33,7 @@ function Login() {
       Loading.remove();
       Notify.success('Login successful!');
       navigate('/');
+      window.location.reload();
     } catch (error) {
       Loading.remove();
       Notify.failure(error.response?.data?.message || 'Login failed. Please try again.');
