@@ -4,52 +4,22 @@ import SliderComponent from "./slider/slider";
 import CategoryNav from "./categories/categories";
 import TopDealsOfTheDay from "./offerDeals/topdeals";
 import ProductList from "./productListing/productlist";
-import { useEffect, useState } from "react";
-import { fetchProductListings } from "../../components/dummyData/productDummyData,";
-import { fetchCategories } from "../../components/dummyData/categoriDummyData";
+import { useEffect } from "react";
 import PromoBanners from "./promobanner";
 import MarketingBannerZone from "../../components/Trust/ourtrust";
-import useCategorieProduct from "../../store/homepageStores/categoireProductStore";
+import useDashboardProduct from "../../store/homepageStores/dashboardStore";
 
 
 
 
 function Homepage() {
-    const CategoriesProduct = useCategorieProduct((state) => state?.Electronic)
-    const fetchDashBoardProduct = useCategorieProduct((state) => state?.fetchDashBoardProduct)
-
-    const [productData, setProductData] = useState([])
-    const [CategoryData, setCategoryData] = useState([])
-
-    const getProduct = async () => {
-        try {
-            const res = await fetchProductListings()
-            setProductData(res)
-        } catch (error) {
-            console.log(error.message);
-        }
-
-    }
-
-    const getCategories = async () => {
-        try {
-            const res = await fetchCategories()
-            setCategoryData(res?.data)
-        } catch (error) {
-            console.log(error.message);
-
-        }
-
-    }
+    const CategoriesProduct = useDashboardProduct((state) => state?.Electronic)
+    const fetchDashBoardProduct = useDashboardProduct((state) => state?.fetchDashBoardProduct)
 
     useEffect(() => {
-        getProduct()
-        getCategories()
+
         fetchDashBoardProduct()
     }, [fetchDashBoardProduct]);
-
-
-
 
     return (
         <Container maxWidth="xl" disableGutters>
@@ -57,14 +27,11 @@ function Homepage() {
             <SliderComponent />
             <MarketingBannerZone />
 
-            <CategoryNav
-                categoriesData={CategoryData}
-            />
+            <CategoryNav />
             <TopDealsOfTheDay />
             <PromoBanners />
             <ProductList
                 title={"Electronic"}
-                productData={productData}
                 data={CategoriesProduct}
                 backgroundColor={"backgroundPurpleSoft.main"}
             />

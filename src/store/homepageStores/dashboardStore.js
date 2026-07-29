@@ -1,7 +1,9 @@
 import { create } from "zustand";
 import { DashbaordApi } from "../../api/endpoint/api.endpoint.js";
 
-const useCategorieProduct = create((set) => ({
+const useDashboardProduct = create((set) => ({
+  slider:[],
+  categories:[],
   Electronic: [],
   Testing: [],
   loading: false,
@@ -13,6 +15,8 @@ const useCategorieProduct = create((set) => ({
     try {
       const response = await DashbaordApi();
       set({
+        slider:response.data?.sliders,
+        categories:response.data?.category,
         Electronic: response.data?.electronic,
         Testing: response.data?.testing,
         loading: false,
@@ -26,4 +30,4 @@ const useCategorieProduct = create((set) => ({
   },
 }));
 
-export default useCategorieProduct;
+export default useDashboardProduct;
