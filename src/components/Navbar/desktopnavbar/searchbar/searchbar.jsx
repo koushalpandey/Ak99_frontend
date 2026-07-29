@@ -3,9 +3,8 @@ import {
   Box,
   Button,
   InputBase,
-  Typography,
 } from "@mui/material";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+
 
 import { searchProduct } from "../../../../api/endpoint/api.endpoint.js";
 import SearchResultDropdown from "./SearchResultDropdown";
@@ -16,14 +15,12 @@ function HeaderSearch() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!search.trim()) {
-      setProducts([]);
-      return;
-    }
+    if (!search.trim()) return;
 
     const timer = setTimeout(async () => {
       try {
         setLoading(true);
+
         const res = await searchProduct(search);
         setProducts(res?.data?.products || []);
       } catch (err) {
@@ -55,29 +52,7 @@ function HeaderSearch() {
           bgcolor: "#fff",
         }}
       >
-        <Box
-          sx={{
-            minWidth: 160,
-            pl: 3,
-            pr: 2,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            borderRight: "1px solid #e0e0e0",
-            cursor: "pointer",
-            height: "100%",
-          }}
-        >
-          <Typography
-            sx={{
-              fontSize: 14,
-            }}
-          >
-            All Categories
-          </Typography>
 
-          <KeyboardArrowDownIcon />
-        </Box>
 
         <InputBase
           value={search}
