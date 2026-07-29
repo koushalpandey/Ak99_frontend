@@ -4,6 +4,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import addTocardimg from "../../../../assets/shopping-cart.png";
 
 import { useAuth } from "../../../../hooks/useAuth.js";
@@ -25,6 +26,25 @@ function HeaderActions() {
   };
 
   if (loading) return null;
+
+  // Shake animation variants with repeat
+  const shakeAnimation = {
+    shake: {
+      x: [0, -10, 10, -10, 10, -5, 5, -3, 3, 0],
+      rotate: [0, -5, 5, -5, 5, -3, 3, -2, 2, 0],
+      transition: {
+        duration: 0.8,
+        ease: "easeInOut",
+        times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1],
+        repeat: Infinity,
+        repeatDelay: 0.2, // 0.2 second pause between shakes
+      },
+    },
+    idle: {
+      x: 0,
+      rotate: 0,
+    },
+  };
 
   return (
     <Box
@@ -60,18 +80,46 @@ function HeaderActions() {
           }}
         />
 
-        <Typography
-          sx={{
-            fontSize: "12px",
-            fontWeight: 500,
-            color: "white.main",
+        <motion.div
+          initial="idle"
+          animate={!isAuthenticated ? "shake" : "idle"}
+          variants={shakeAnimation}
+          whileHover={!isAuthenticated ? {
+            scale: 1.1,
+            transition: { duration: 0.2 }
+          } : {}}
+          style={{
+            display: "inline-block",
+            cursor: "pointer",
           }}
         >
-          {isAuthenticated ? userData?.name : "Login"}
-        </Typography>
+          <Typography
+            sx={{
+              fontSize: "12px",
+              fontWeight: 500,
+              color: "white.main",
+              ...(!isAuthenticated && {
+                background: "linear-gradient(45deg, #FF6B6B, #FF4757, #FF6B6B)",
+                backgroundSize: "200% 200%",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                fontWeight: 700,
+                animation: "gradientShift 2s ease infinite",
+                "@keyframes gradientShift": {
+                  "0%": { backgroundPosition: "0% 50%" },
+                  "50%": { backgroundPosition: "100% 50%" },
+                  "100%": { backgroundPosition: "0% 50%" },
+                },
+              }),
+            }}
+          >
+            {isAuthenticated ? userData?.name : "Login"}
+          </Typography>
+        </motion.div>
       </Box>
 
-    {/* Cart */}
+      {/* Cart */}
       <Box
         onClick={() => handleProtectedNavigation("/checkout")}
         sx={{
