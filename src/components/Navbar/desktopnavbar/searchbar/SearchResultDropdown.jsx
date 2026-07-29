@@ -9,8 +9,6 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-
-
 function SearchResultDropdown({
     loading,
     products,
