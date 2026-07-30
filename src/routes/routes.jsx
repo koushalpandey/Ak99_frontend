@@ -9,6 +9,7 @@ import CategoriesProductPage from "../pages/otherPages/categoriesProduct-page/ca
 
 import ProtectedRoute from "./protected.routes";
 import PublicRoute from "./public.routes";
+import UserProfile from "../pages/userDashbaord/userProfile/userProfile.page";
 
 export const router = createBrowserRouter([
   // Public Routes
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <CheckoutPage />,
+      },
+      {
+        path: "/Profile",
+        element: <UserProfile />,
       },
 
     ],

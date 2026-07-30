@@ -82,5 +82,21 @@ export const searchProduct = async (query) => {
     method: "get",
   });
 };
+export const creatUserDetail = async (payload) => {
+  return await apiRequest({
+    url: "/profile/create",
+    method: "post",
+    payload,
+    requiresAuth:true
+  });
+};
+export const getUserDetail = async (payload) => {
+  return await apiRequest({
+    url: "/profile/get",
+    method: "get",
+    payload,
+    requiresAuth:true
+  });
+};
 
 
