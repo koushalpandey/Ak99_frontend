@@ -1,5 +1,4 @@
 import { Box, Container } from "@mui/material";
-
 import HeaderTop from "./LogowithLocation/logowithLocation";
 import HeaderSearch from "./searchbar/searchbar";
 import HeaderActions from "./headeraction/header.action";
