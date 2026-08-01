@@ -2,7 +2,6 @@ import { Container } from "@mui/material";
 import Subheader from "./subheader/subheader";
 import SliderComponent from "./slider/slider";
 import CategoryNav from "./categories/categories";
-import TopDealsOfTheDay from "./offerDeals/topdeals";
 import ProductList from "./productListing/productlist";
 import { useEffect } from "react";
 import PromoBanners from "./promobanner";
@@ -28,7 +27,11 @@ function Homepage() {
             <MarketingBannerZone />
 
             <CategoryNav />
-            <TopDealsOfTheDay />
+            <ProductList
+                title={"Electronic"}
+                data={CategoriesProduct}
+                backgroundColor={"backgroundPurpleSoft.main"}
+            />
             <PromoBanners />
             <ProductList
                 title={"Electronic"}
