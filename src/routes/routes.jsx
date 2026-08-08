@@ -11,6 +11,7 @@ import ProtectedRoute from "./protected.routes";
 import PublicRoute from "./public.routes";
 import UserProfile from "../pages/userDashbaord/userProfile/userProfile.page";
 
+
 export const router = createBrowserRouter([
   // Public Routes
   {
@@ -48,6 +49,8 @@ export const router = createBrowserRouter([
         path: "/Profile",
         element: <UserProfile />,
       },
+
+
 
     ],
   },
