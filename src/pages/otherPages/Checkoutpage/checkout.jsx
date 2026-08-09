@@ -13,7 +13,6 @@ import {
 } from '@mui/material';
 import {
     Pencil,
-    ChevronRight,
     ArrowLeft,
     User,
     Phone,
@@ -23,6 +22,7 @@ import {
 } from 'lucide-react';
 import useDetailStore from '../../../store/userStore/userDetailStore';
 import { useLocation } from "react-router-dom";
+import RazorpayPaymentButton from '../../../components/Razorpay/Rzorpay';
 
 export default function CheckoutPage() {
     const userData = useDetailStore((state) => state?.Data);
@@ -33,6 +33,15 @@ export default function CheckoutPage() {
     useEffect(() => {
         fetchuserData()
     }, [fetchuserData])
+
+
+    const addressData = {
+        address: userData?.address,
+        city: userData?.city,
+        state: userData?.state,
+        pincode: userData?.pincode,
+        phoneNumber: userData?.phoneNumber,
+    };
 
 
     const handleChange = () => () => {
@@ -717,7 +726,7 @@ export default function CheckoutPage() {
                                             color: '#64748B'
                                         }}
                                     >
-                                         Market Price:
+                                        Market Price:
                                     </Typography>
                                     <Typography
                                         sx={{
@@ -776,7 +785,7 @@ export default function CheckoutPage() {
                                             fontWeight: 900
                                         }}
                                     >
-                                         ₹{product?.price}
+                                        ₹{product?.price}
                                     </Typography>
                                 </Stack>
                                 <Chip
@@ -796,45 +805,19 @@ export default function CheckoutPage() {
                             </Stack>
 
                             <Box sx={{ mt: 3 }}>
-                                <Button
-                                    variant="contained"
-                                    fullWidth
-                                    endIcon={<ChevronRight size={18} />}
-                                    sx={{
-                                        bgcolor: '#7C3AED',
-                                        color: '#FFFFFF',
-                                        textTransform: 'none',
-                                        borderRadius: 3,
-                                        background: 'linear-gradient(90deg, #6D28D9 0%, #7C3AED 100%)',
-                                        boxShadow: '0px 4px 12px rgba(124, 58, 237, 0.25)',
-                                        '&:hover': {
-                                            background: 'linear-gradient(90deg, #5B21B6 0%, #6D28D9 100%)'
-                                        }
+                                <RazorpayPaymentButton
+                                    productId={product?.id}
+                                    address={addressData}
+                                    user={userData?.user}
+                                    onSuccess={({ order, payment }) => {
+                                        console.log("Order:", order);
+                                        console.log("Payment:", payment);
+
+                                        // Example:
+                                        // navigate(`/order-success/${order.id}`);
                                     }}
-                                >
-                                    <Box
-                                        sx={{
-                                            width: '100%',
-                                            textAlign: 'center'
-                                        }}
-                                    >
-                                        <Typography
-                                            variant="subtitle2"
-                                            sx={{ fontWeight: 800 }}
-                                        >
-                                            Buy Now
-                                        </Typography>
-                                        <Typography
-                                            variant="caption"
-                                            sx={{
-                                                opacity: 0.8,
-                                                fontSize: 10
-                                            }}
-                                        >
-                                            Secure Checkout
-                                        </Typography>
-                                    </Box>
-                                </Button>
+                                />
+
                                 <Button
                                     variant="outlined"
                                     fullWidth

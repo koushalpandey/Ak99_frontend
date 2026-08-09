@@ -100,3 +100,23 @@ export const getUserDetail = async (payload) => {
 };
 
 
+export const createOrderApi = async (payload) => {
+    return await apiRequest({
+        url: "/order/create",
+        method: "post",
+        payload,
+        requiresAuth: true,
+    });
+};
+
+
+
+
+export const verifyPaymentApi = async (payload) => {
+    return await apiRequest({
+        url: "/order/verify",
+        method: "post",
+        payload,
+        requiresAuth: true,
+    });
+};
