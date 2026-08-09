@@ -21,7 +21,7 @@ import {
 
 } from 'lucide-react';
 import useDetailStore from '../../../store/userStore/userDetailStore';
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import RazorpayPaymentButton from '../../../components/Razorpay/Rzorpay';
 
 export default function CheckoutPage() {
@@ -819,6 +819,8 @@ export default function CheckoutPage() {
                                 />
 
                                 <Button
+                                    component={Link}
+                                    to="/"
                                     variant="outlined"
                                     fullWidth
                                     startIcon={<ArrowLeft size={18} />}
