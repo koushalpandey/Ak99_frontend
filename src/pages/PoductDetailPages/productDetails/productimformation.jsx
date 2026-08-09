@@ -1,6 +1,5 @@
 import { Box, Typography, Button, Rating, Stack, } from "@mui/material";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useNavigate } from "react-router-dom";
 
 
