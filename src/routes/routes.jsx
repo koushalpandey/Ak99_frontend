@@ -4,7 +4,7 @@ import MainLayout from "../layout/mainLayout";
 import Homepage from "../pages/HomepagePages/homepage";
 import ProductDetailsPage from "../pages/PoductDetailPages/productDetailsPage";
 import Login from "../auth/authpages/loginPage";
-import CheckoutPage from "../pages/otherPages/checkout";
+import CheckoutPage from "../pages/otherPages/Checkoutpage/checkout";
 import CategoriesProductPage from "../pages/otherPages/categoriesProduct-page/categorieProduct";
 
 import ProtectedRoute from "./protected.routes";
