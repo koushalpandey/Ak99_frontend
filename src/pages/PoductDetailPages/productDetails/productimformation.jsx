@@ -1,9 +1,18 @@
 import { Box, Typography, Button, Rating, Stack, } from "@mui/material";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { useNavigate } from "react-router-dom";
 
 
 const ProductInformation = ({ productData }) => {
+  const navigate = useNavigate();
+  const handleBuyNow = () => {
+    navigate("/checkout", {
+      state: {
+        product: productData,
+      },
+    });
+  };
 
   return (
     <Box
@@ -105,7 +114,7 @@ const ProductInformation = ({ productData }) => {
       >
         {productData?.description}
       </Typography>
-     <Stack
+      <Stack
         direction="row"
         spacing={1.5}
         alignItems="center"
@@ -115,7 +124,7 @@ const ProductInformation = ({ productData }) => {
           gap: 1.5
         }}
       >
-      {/* Add to Wishlist Button (Frosty Glassmorphism) */}
+        {/* Add to Wishlist Button (Frosty Glassmorphism) */}
         <Button
           variant="outlined"
           startIcon={<FavoriteBorderIcon />}
@@ -147,9 +156,10 @@ const ProductInformation = ({ productData }) => {
         >
           Add to card
         </Button>
-         <Button
+        <Button
           variant="contained"
           startIcon={<ShoppingBagIcon />}
+          onClick={handleBuyNow}
           sx={{
             flex: 1,
             minWidth: "160px",
@@ -165,31 +175,19 @@ const ProductInformation = ({ productData }) => {
             transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
             overflow: "hidden",
 
-            "&::before": {
-              content: '""',
-              position: "absolute",
-              top: 0,
-              left: "-100%",
-              width: "100%",
-              height: "100%",
-              background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent)",
-              transition: "all 0.6s ease",
-            },
             "&:hover": {
-              background: "linear-gradient(135deg, rgba(26, 54, 93, 0.95), rgba(15, 35, 71, 0.95))",
+              background:
+                "linear-gradient(135deg, rgba(26, 54, 93, 0.95), rgba(15, 35, 71, 0.95))",
               transform: "translateY(-2px)",
               boxShadow: "0 8px 20px rgba(26, 54, 93, 0.35)",
-              borderColor: "rgba(255, 255, 255, 0.25)",
-              "&::before": {
-                left: "100%",
-              }
             },
+
             "&:active": {
               transform: "translateY(0px) scale(0.98)",
-            }
+            },
           }}
         >
-          By Now
+          Buy Now
         </Button>
       </Stack>
     </Box>
