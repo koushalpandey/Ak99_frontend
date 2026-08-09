@@ -788,7 +788,7 @@ export default function CheckoutPage() {
                                         ₹{product?.price}
                                     </Typography>
                                 </Stack>
-                                <Chip
+                                {/* <Chip
                                     label="You saved ₹2,390 on this order"
                                     size="small"
                                     icon={<span style={{ fontSize: 12 }}>🏷️</span>}
@@ -801,7 +801,7 @@ export default function CheckoutPage() {
                                         px: 1,
                                         borderRadius: 1.5
                                     }}
-                                />
+                                /> */}
                             </Stack>
 
                             <Box sx={{ mt: 3 }}>

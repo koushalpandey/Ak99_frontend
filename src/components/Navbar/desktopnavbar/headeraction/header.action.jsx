@@ -121,7 +121,7 @@ function HeaderActions() {
 
       {/* Cart */}
       <Box
-        onClick={() => handleProtectedNavigation("/checkout")}
+        onClick={() => handleProtectedNavigation(null)}
         sx={{
           display: "flex",
           alignItems: "center",
