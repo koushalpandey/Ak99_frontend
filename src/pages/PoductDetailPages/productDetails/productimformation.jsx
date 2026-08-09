@@ -117,52 +117,23 @@ const ProductInformation = ({ productData }) => {
       <Stack
         direction="row"
         spacing={1.5}
-        alignItems="center"
+
         sx={{
           mt: 4,
           flexWrap: "wrap",
-          gap: 1.5
+          alignItems: "center",
+          justifyContent:"center",
+          width: '100%'
         }}
       >
-        {/* Add to Wishlist Button (Frosty Glassmorphism) */}
-        <Button
-          variant="outlined"
-          startIcon={<FavoriteBorderIcon />}
-          sx={{
-            flex: 1,
-            minWidth: "160px",
-            height: "44px",
-            textTransform: "capitalize",
-            fontWeight: 600,
-            borderRadius: "8px",
-            color: "#4a5568",
-            border: "1px solid rgba(203, 213, 224, 0.6)",
-            background: "linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(226, 232, 240, 0.4) 100%)",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
-            boxShadow: "0 4px 15px rgba(0, 0, 0, 0.02)",
-            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-            "&:hover": {
-              borderColor: "rgba(160, 174, 192, 0.8)",
-              background: "linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(237, 242, 247, 0.6) 100%)",
-              transform: "translateY(-2px)",
-              boxShadow: "0 8px 20px rgba(0, 0, 0, 0.06), inset 0 0 10px rgba(255, 255, 255, 0.5)",
-              color: "#1a365d"
-            },
-            "&:active": {
-              transform: "translateY(0px) scale(0.98)",
-            }
-          }}
-        >
-          Add to card
-        </Button>
+
         <Button
           variant="contained"
           startIcon={<ShoppingBagIcon />}
           onClick={handleBuyNow}
           sx={{
-            flex: 1,
-            minWidth: "160px",
+            width: "460px",
+            m: "auto",
             height: "44px",
             textTransform: "uppercase",
             fontWeight: 600,
