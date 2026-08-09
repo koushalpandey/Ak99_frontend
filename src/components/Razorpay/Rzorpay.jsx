@@ -3,10 +3,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { ChevronRight } from "lucide-react";
 import { Notify } from "notiflix";
 
-import {
-    createOrderApi,
-    verifyPaymentApi,
-} from "../../api/endpoint/api.endpoint.js";
+import {createOrderApi,verifyPaymentApi} from "../../api/endpoint/api.endpoint.js";
 
 const RazorpayPaymentButton = ({
     productId,
@@ -33,13 +30,7 @@ const RazorpayPaymentButton = ({
                 productId,
                 address,
             };
-
-            console.log("Create Order Payload:", payload);
-
             const response = await createOrderApi(payload);
-
-            console.log("Create Order Response:", response);
-
             if (!response?.success) {
                 Notify.failure(
                     response?.message ||
@@ -49,7 +40,6 @@ const RazorpayPaymentButton = ({
             }
 
             const data = response.data;
-
             const razorpayOrder = data?.razorpayOrder;
             const keyId = data?.key_id;
             const order = data?.order;
@@ -95,11 +85,6 @@ const RazorpayPaymentButton = ({
 
 
                 handler: async (paymentResponse) => {
-                    console.log(
-                        "Razorpay Payment Response:",
-                        paymentResponse
-                    );
-
                     try {
                         const verifyPayload = {
                             razorpay_order_id:
@@ -114,20 +99,14 @@ const RazorpayPaymentButton = ({
                             orderId: order.id,
                         };
 
-                        console.log(
-                            "Verify Payment Payload:",
-                            verifyPayload
-                        );
+
 
                         const verifyResponse =
                             await verifyPaymentApi(
                                 verifyPayload
                             );
 
-                        console.log(
-                            "Verify Payment Response:",
-                            verifyResponse
-                        );
+
 
                         if (verifyResponse?.success) {
                             Notify.success("Payment successful!");
