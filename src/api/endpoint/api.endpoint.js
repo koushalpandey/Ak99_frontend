@@ -109,9 +109,6 @@ export const createOrderApi = async (payload) => {
     });
 };
 
-
-
-
 export const verifyPaymentApi = async (payload) => {
     return await apiRequest({
         url: "/order/verify",
