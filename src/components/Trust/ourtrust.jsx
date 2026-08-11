@@ -23,7 +23,7 @@ export default function MarketingBannerZone() {
       icon: <LocalShippingOutlinedIcon sx={{ color: '#2979FF' }} />,
       bgColor: '#E3F2FD',
       title: 'Free Shipping',
-      subtitle: 'On orders over $99',
+      subtitle: 'On orders over ₹99',
     },
     {
       icon: <HeadsetMicOutlinedIcon sx={{ color: '#FF6D00' }} />,
