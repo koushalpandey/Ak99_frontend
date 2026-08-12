@@ -53,6 +53,20 @@ export default function UserProfile() {
   const [isEditing, setIsEditing] = useState(false);
   const [hasData, setHasData] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    city: '',
+    state: '',
+    gender: 'MALE',
+    pincode: '',
+    createdAt: '',
+    updatedAt: ''
+  });
+
+  const [tempData, setTempData] = useState({ ...formData });
 
   useEffect(() => {
     fetchUserDetailData();
@@ -134,20 +148,7 @@ export default function UserProfile() {
     }
   }, [UserData]);
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    state: '',
-    gender: 'MALE',
-    pincode: '',
-    createdAt: '',
-    updatedAt: ''
-  });
 
-  const [tempData, setTempData] = useState({ ...formData });
 
   // Normal functions for API calls
   const updateUserDetailData = async (payload) => {
