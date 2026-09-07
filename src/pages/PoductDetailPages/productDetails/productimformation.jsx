@@ -114,83 +114,110 @@ const ProductInformation = ({ productData }) => {
       >
         {productData?.description}
       </Typography>
-      <Stack
-        direction="row"
-        spacing={1.5}
 
-        sx={{
-          mt: 4,
-          flexWrap: "wrap",
-          gap: 1.5,
-           alignItems:"center"
-        }}
-      >
-        {/* Add to Wishlist Button (Frosty Glassmorphism) */}
-        <Button
-          variant="outlined"
-          startIcon={<FavoriteBorderIcon />}
+      {productData?.quantity > 0 ? (
+        <Stack
+          direction="row"
+          spacing={1.5}
+
           sx={{
-            flex: 1,
-            minWidth: "160px",
-            height: "44px",
-            textTransform: "capitalize",
-            fontWeight: 600,
-            borderRadius: "8px",
-            color: "#4a5568",
-            border: "1px solid rgba(203, 213, 224, 0.6)",
-            background: "linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(226, 232, 240, 0.4) 100%)",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
-            boxShadow: "0 4px 15px rgba(0, 0, 0, 0.02)",
-            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-            "&:hover": {
-              borderColor: "rgba(160, 174, 192, 0.8)",
-              background: "linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(237, 242, 247, 0.6) 100%)",
-              transform: "translateY(-2px)",
-              boxShadow: "0 8px 20px rgba(0, 0, 0, 0.06), inset 0 0 10px rgba(255, 255, 255, 0.5)",
-              color: "#1a365d"
-            },
-            "&:active": {
-              transform: "translateY(0px) scale(0.98)",
-            }
+            mt: 4,
+            flexWrap: "wrap",
+            gap: 1.5,
+            alignItems: "center"
           }}
         >
-          Add to card
-        </Button>
+          {/* Add to Wishlist Button (Frosty Glassmorphism) */}
+          <Button
+            variant="outlined"
+            startIcon={<FavoriteBorderIcon />}
+            sx={{
+              flex: 1,
+              minWidth: "160px",
+              height: "44px",
+              textTransform: "capitalize",
+              fontWeight: 600,
+              borderRadius: "8px",
+              color: "#4a5568",
+              border: "1px solid rgba(203, 213, 224, 0.6)",
+              background: "linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(226, 232, 240, 0.4) 100%)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              boxShadow: "0 4px 15px rgba(0, 0, 0, 0.02)",
+              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+              "&:hover": {
+                borderColor: "rgba(160, 174, 192, 0.8)",
+                background: "linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(237, 242, 247, 0.6) 100%)",
+                transform: "translateY(-2px)",
+                boxShadow: "0 8px 20px rgba(0, 0, 0, 0.06), inset 0 0 10px rgba(255, 255, 255, 0.5)",
+                color: "#1a365d"
+              },
+              "&:active": {
+                transform: "translateY(0px) scale(0.98)",
+              }
+            }}
+          >
+            Add to card
+          </Button>
+          <Button
+            variant="contained"
+            startIcon={<ShoppingBagIcon />}
+            onClick={handleBuyNow}
+            sx={{
+              flex: 1,
+              minWidth: "160px",
+              height: "44px",
+              textTransform: "uppercase",
+              fontWeight: 600,
+              borderRadius: "8px",
+              position: "relative",
+              background: "linear-gradient(135deg, rgba(29, 64, 105, 0.95), rgba(26, 54, 93, 0.95))",
+              backdropFilter: "blur(4px)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              boxShadow: "0 4px 15px rgba(26, 54, 93, 0.2)",
+              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+              overflow: "hidden",
+
+              "&:hover": {
+                background:
+                  "linear-gradient(135deg, rgba(26, 54, 93, 0.95), rgba(15, 35, 71, 0.95))",
+                transform: "translateY(-2px)",
+                boxShadow: "0 8px 20px rgba(26, 54, 93, 0.35)",
+              },
+
+              "&:active": {
+                transform: "translateY(0px) scale(0.98)",
+              },
+            }}
+          >
+            Buy Now
+          </Button>
+        </Stack>
+
+      ) : (
         <Button
-          variant="contained"
-          startIcon={<ShoppingBagIcon />}
-          onClick={handleBuyNow}
+          fullWidth
+          disabled
           sx={{
-            flex: 1,
-            minWidth: "160px",
+            mt: 4,
             height: "44px",
+            borderRadius: "8px",
+            fontWeight: 700,
             textTransform: "uppercase",
-            fontWeight: 600,
-            borderRadius: "8px",
-            position: "relative",
-            background: "linear-gradient(135deg, rgba(29, 64, 105, 0.95), rgba(26, 54, 93, 0.95))",
-            backdropFilter: "blur(4px)",
-            border: "1px solid rgba(255, 255, 255, 0.1)",
-            boxShadow: "0 4px 15px rgba(26, 54, 93, 0.2)",
-            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-            overflow: "hidden",
 
-            "&:hover": {
-              background:
-                "linear-gradient(135deg, rgba(26, 54, 93, 0.95), rgba(15, 35, 71, 0.95))",
-              transform: "translateY(-2px)",
-              boxShadow: "0 8px 20px rgba(26, 54, 93, 0.35)",
-            },
-
-            "&:active": {
-              transform: "translateY(0px) scale(0.98)",
+            "&.Mui-disabled": {
+              background: "#f1f3f5",
+              color: "#e03131",
+              border: "1px solid #ffc9c9",
             },
           }}
         >
-          Buy Now
+          Out of Stock
         </Button>
-      </Stack>
+      )
+      }
+
+
     </Box>
   );
 };
