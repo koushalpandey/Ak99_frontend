@@ -21,6 +21,7 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import useOrderListStore from '../../../../store/orderStore/orderlist/store';
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function OrderList() {
     const OrderData = useOrderListStore((state) => state?.OrderData)
@@ -205,14 +206,7 @@ export default function OrderList() {
                                             alt={product?.name || 'Product'}
                                             sx={{ width: 100, height: 100, borderRadius: 2, objectFit: 'cover', bgcolor: '#f4f5f8' }}
                                         />
-                                        <Box sx={{
-                                            position: 'absolute', top: -10, left: -10, bgcolor: 'white',
-                                            border: '1px solid #e9ebf0', borderRadius: '50%', width: 28, height: 28,
-                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                            fontSize: '0.8rem', fontWeight: 600, color: '#1a1d21'
-                                        }}>
-                                            {firstItem?.quantity || 1}
-                                        </Box>
+
                                     </Box>
                                     <Box sx={{ pt: 0.5 }}>
                                         <Typography sx={{ fontWeight: 700, color: '#1a1d21', fontSize: '1.05rem', mb: 0.5 }}>
@@ -270,7 +264,7 @@ export default function OrderList() {
                                     <Box>
                                         <Typography variant="body2" sx={{ color: '#8e96a3', fontSize: '0.85rem', mb: 0.2 }}>Payment Method</Typography>
                                         <Typography sx={{ fontWeight: 600, color: '#4a515a', fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                                            <span style={{ color: '#1f64d1', fontStyle: 'italic', fontWeight: 800, fontSize: '1.1rem' }}>R</span> Razorpay
+                                         Online
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -294,14 +288,16 @@ export default function OrderList() {
                                     </Avatar>
                                     <Box>
                                         <Typography sx={{ fontWeight: 700, color: '#188a42', fontSize: '1rem' }}>
-                                            Status: {order.status}
+                                            Status: {order?.status}
                                         </Typography>
                                         <Typography variant="body2" sx={{ color: '#68707d', mt: 0.2, fontSize: '0.9rem' }}>
-                                            {getStatusMessage(order.status)}
+                                            {getStatusMessage(order?.status)}
                                         </Typography>
                                     </Box>
                                 </Box>
                                 <Button
+                                    component={NavLink}
+                                    to="/order-details"
                                     variant="outlined"
                                     endIcon={<KeyboardArrowRightIcon />}
                                     sx={{
