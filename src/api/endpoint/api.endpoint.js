@@ -60,21 +60,18 @@ export const submitReviewApi = async (data) => {
   });
 };
 
-
-
-export const DashbaordApi = async()=>{
+export const DashbaordApi = async () => {
   return await apiRequest({
     url: "/products/dashboard",
-    method:"get",
-  })
-}
-export const CategorieProduct = async(slug)=>{
+    method: "get",
+  });
+};
+export const CategorieProduct = async (slug) => {
   return await apiRequest({
     url: `/products/categories/${slug}`,
-    method:"get",
-  })
-}
-
+    method: "get",
+  });
+};
 
 export const searchProduct = async (query) => {
   return await apiRequest({
@@ -87,7 +84,7 @@ export const creatUserDetail = async (payload) => {
     url: "/profile/create",
     method: "post",
     payload,
-    requiresAuth:true
+    requiresAuth: true,
   });
 };
 export const getUserDetail = async (payload) => {
@@ -95,25 +92,31 @@ export const getUserDetail = async (payload) => {
     url: "/profile/get",
     method: "get",
     payload,
-    requiresAuth:true
+    requiresAuth: true,
   });
 };
 
-
 export const createOrderApi = async (payload) => {
-    return await apiRequest({
-        url: "/order/create",
-        method: "post",
-        payload,
-        requiresAuth: true,
-    });
+  return await apiRequest({
+    url: "/order/create",
+    method: "post",
+    payload,
+    requiresAuth: true,
+  });
 };
 
 export const verifyPaymentApi = async (payload) => {
-    return await apiRequest({
-        url: "/order/verify",
-        method: "post",
-        payload,
-        requiresAuth: true,
-    });
+  return await apiRequest({
+    url: "/order/verify",
+    method: "post",
+    payload,
+    requiresAuth: true,
+  });
+};
+export const Orderlist = async () => {
+  return await apiRequest({
+    url: "/order/list",
+    method: "get",
+    requiresAuth: true,
+  });
 };
