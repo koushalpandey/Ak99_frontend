@@ -121,7 +121,7 @@ function HeaderActions() {
 
       {/* Cart */}
       <Box
-        onClick={() => handleProtectedNavigation(null)}
+        onClick={() => handleProtectedNavigation('/orderList')}
         sx={{
           display: "flex",
           alignItems: "center",
@@ -146,7 +146,7 @@ function HeaderActions() {
             mt: 0.8,
           }}
         >
-          Add to Cart
+          Order
         </Typography>
       </Box>
     </Box>

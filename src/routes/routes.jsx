@@ -10,6 +10,7 @@ import CategoriesProductPage from "../pages/otherPages/categoriesProduct-page/ca
 import ProtectedRoute from "./protected.routes";
 import PublicRoute from "./public.routes";
 import UserProfile from "../pages/userDashbaord/userProfile/userProfile.page";
+import OrderList from "../pages/userDashbaord/orderpages/orderlist/orderList.page";
 
 
 export const router = createBrowserRouter([
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
         path: "categorie/:slug",
         element: <CategoriesProductPage />,
       },
+
     ],
   },
 
@@ -48,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path: "/Profile",
         element: <UserProfile />,
+      },
+      {
+        path: "orderList",
+        element: <OrderList />,
       },
 
 
